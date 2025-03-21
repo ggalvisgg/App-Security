@@ -159,9 +159,7 @@ fun LoginForm(
                     modifier = Modifier
                         .padding(3.dp)
                 )
-                Text(text = "Iniciar sesion"
-
-                )
+                Text(text = "Iniciar sesion")
         }
 
         Spacer(modifier = Modifier.height(10.dp))
