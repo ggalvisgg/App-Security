@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import com.appsecurity.ui.screens.EditScreen
 import com.appsecurity.ui.screens.LoginScreen
 import com.appsecurity.ui.screens.RecoverPasswordScreen
+import com.appsecurity.ui.screens.WatchNotificationScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             //LoginScreen()
             //EditScreen()
-            RecoverPasswordScreen()
+            //RecoverPasswordScreen()
+            WatchNotificationScreen()
         }
     }
 }

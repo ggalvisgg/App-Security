@@ -30,7 +30,7 @@ fun TextFieldForm(
     OutlinedTextField(
         modifier = modifier,
         placeholder = {
-            if (label.isEmpty()) {Text(text = placeholder)}
+            Text(text = placeholder)
         },
         value = value,
         singleLine = true,
