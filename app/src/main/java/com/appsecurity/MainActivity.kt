@@ -6,8 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.appsecurity.ui.screens.EditScreen
 import com.appsecurity.ui.screens.LoginScreen
+import com.appsecurity.ui.screens.ManageReportModeratorScreen
 import com.appsecurity.ui.screens.ReasonReportScreen
 import com.appsecurity.ui.screens.RecoverPasswordScreen
+import com.appsecurity.ui.screens.WatchAllComentsScreen
+import com.appsecurity.ui.screens.WatchComentsScreen
 import com.appsecurity.ui.screens.WatchNotificationScreen
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +22,10 @@ class MainActivity : ComponentActivity() {
             //EditScreen()
             //RecoverPasswordScreen()
             //WatchNotificationScreen()
-            ReasonReportScreen()
+            //ReasonReportScreen()
+            //ManageReportModeratorScreen() -> ESTA DE ULTIMA
+            //WatchComentsScreen() -> ESTA DE ULTIMA
+            WatchAllComentsScreen()
         }
     }
 }
