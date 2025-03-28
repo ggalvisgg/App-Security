@@ -11,6 +11,7 @@ import com.appsecurity.ui.screens.ManageReportModeratorScreen
 import com.appsecurity.ui.screens.ReasonReportScreen
 import com.appsecurity.ui.screens.RecoverPasswordScreen
 import com.appsecurity.ui.screens.RegisterUserScreen
+import com.appsecurity.ui.screens.WatchAccountScreen
 import com.appsecurity.ui.screens.WatchAllComentsScreen
 import com.appsecurity.ui.screens.WatchComentsScreen
 import com.appsecurity.ui.screens.WatchNotificationScreen
@@ -29,7 +30,8 @@ class MainActivity : ComponentActivity() {
             //WatchComentsScreen() -> ESTA DE ULTIMA
             //WatchAllComentsScreen()
             //RegisterUserScreen()
-            ForgetPasswordScreen()
+            //ForgetPasswordScreen()
+            WatchAccountScreen()
         }
     }
 }

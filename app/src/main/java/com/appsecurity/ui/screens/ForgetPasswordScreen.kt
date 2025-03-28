@@ -56,7 +56,7 @@ fun ForgetPassForm(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
-        
+
         Text(text = "OLVIDASTE TU \nCONTRASEÑA",
                 fontSize = 20.sp)
 
