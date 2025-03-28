@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.appsecurity.ui.screens.EditScreen
+import com.appsecurity.ui.screens.ForgetPasswordScreen
 import com.appsecurity.ui.screens.LoginScreen
 import com.appsecurity.ui.screens.ManageReportModeratorScreen
 import com.appsecurity.ui.screens.ReasonReportScreen
@@ -27,7 +28,8 @@ class MainActivity : ComponentActivity() {
             //ManageReportModeratorScreen() -> ESTA DE ULTIMA
             //WatchComentsScreen() -> ESTA DE ULTIMA
             //WatchAllComentsScreen()
-            RegisterUserScreen()
+            //RegisterUserScreen()
+            ForgetPasswordScreen()
         }
     }
 }
