@@ -58,7 +58,7 @@ fun AccountForm(
 
     Column(
         modifier = Modifier
-            .padding(10.dp, top = 50.dp)
+            .padding()
             .fillMaxSize(),
         //verticalArrangement = Arrangement.Top,
         //verticalArrangement = Arrangement.Center

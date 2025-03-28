@@ -107,7 +107,8 @@ fun LoginForm(
         Text(text = "Contraseña",
             modifier = Modifier
                 .align (Alignment.Start)
-                .padding(start = 70.dp))
+                .padding(start = 70.dp)
+        )
 
         TextFieldForm(
             value = password,
@@ -153,6 +154,7 @@ fun LoginForm(
                         Toast.makeText(contex, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show()
                     }
                 }){
+
                 Icon(
                     imageVector = Icons.Rounded.Done,
                     contentDescription = "Icono de inicio",
@@ -178,6 +180,5 @@ fun LoginForm(
                 withLink(link) { append(" Registrate aqui") }
             }
         )
-
     }
 }

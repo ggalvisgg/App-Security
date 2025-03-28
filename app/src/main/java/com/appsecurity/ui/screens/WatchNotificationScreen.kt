@@ -81,8 +81,7 @@ fun WatchNotiForm(
                     modifier = Modifier
                         .padding(end = 8.dp)
                         .size(30.dp),
-                tint = Color(0xFF63578A),
-
+                tint = Color(0xFF63578A)
                 )
 
                 Column {
