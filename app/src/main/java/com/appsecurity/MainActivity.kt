@@ -11,6 +11,7 @@ import com.appsecurity.ui.screens.ManageReportModeratorScreen
 import com.appsecurity.ui.screens.ReasonReportScreen
 import com.appsecurity.ui.screens.RecoverPasswordScreen
 import com.appsecurity.ui.screens.RegisterUserScreen
+import com.appsecurity.ui.screens.UserCreateReportScreen
 import com.appsecurity.ui.screens.UserReportScreen
 import com.appsecurity.ui.screens.UserWatchAllReportScreen
 import com.appsecurity.ui.screens.WatchAccountScreen
@@ -35,7 +36,8 @@ class MainActivity : ComponentActivity() {
             //ForgetPasswordScreen()
             //WatchAccountScreen()
             //UserReportScreen()
-            UserWatchAllReportScreen()
+            //UserWatchAllReportScreen()
+            UserCreateReportScreen()
         }
     }
 }
