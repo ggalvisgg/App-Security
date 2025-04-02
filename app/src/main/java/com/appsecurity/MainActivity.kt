@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.appsecurity.ui.screens.EditReportScreen
 import com.appsecurity.ui.screens.EditScreen
 import com.appsecurity.ui.screens.ForgetPasswordScreen
 import com.appsecurity.ui.screens.LoginScreen
@@ -37,7 +38,8 @@ class MainActivity : ComponentActivity() {
             //WatchAccountScreen()
             //UserReportScreen()
             //UserWatchAllReportScreen()
-            UserCreateReportScreen()
+            //UserCreateReportScreen()
+            EditReportScreen()
         }
     }
 }
