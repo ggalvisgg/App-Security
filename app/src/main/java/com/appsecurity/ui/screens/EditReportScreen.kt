@@ -28,20 +28,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalAutofill
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.graphics.Color as AndroidColor
-import androidx.compose.ui.res.stringResource
-import com.appsecurity.R
 
 @Composable
-fun UserCreateReportScreen(){
+fun EditReportScreen(){
 
     var contex = LocalContext.current
 
     Scaffold { padding ->
-        CreateReportForm(
+        EditReportForm(
             padding,
             contex
         )
@@ -49,13 +48,13 @@ fun UserCreateReportScreen(){
 }
 
 @Composable
-fun CreateReportForm(
+fun EditReportForm(
     paddingValues: PaddingValues,
     contex : Context
 ){
     Column(
         modifier = Modifier
-            .padding(10.dp, top = 50.dp)
+            .padding(10.dp, top=50.dp)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -63,10 +62,10 @@ fun CreateReportForm(
 
         var nuevoReporte by rememberSaveable { mutableStateOf("") }
 
-        Text(text = stringResource(id = R.string.titleCrearReporte),
+        Text(text = "EDITAR REPORTE",
             fontSize = 30.sp,
             //modifier = Modifier.padding(top =12 .dp)
-                )
+        )
 
         Spacer(modifier = Modifier
             .height(50.dp))
@@ -75,7 +74,7 @@ fun CreateReportForm(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(text = stringResource(id = R.string.titleCrearReporte))
+            Text(text = "Cargar una foto")
 
             Icon(imageVector = Icons.Rounded.Phone,
                 contentDescription = "Icono de subir foto del reporte creado",
@@ -84,11 +83,38 @@ fun CreateReportForm(
                     .align(Alignment.Top))
         }
 
+        Spacer(modifier = Modifier
+            .height(20.dp))
+
+        Row(
+            horizontalArrangement = Arrangement.Start,
+        ){
+
+            Button(
+                colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
+                onClick = {}
+            ) {
+                Text(text = "Resuelto",
+                    fontSize = 18.sp)
+            }
+
+            Spacer(modifier = Modifier
+                .width(10.dp))
+
+            Button(
+                colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
+                onClick = {}
+            ) {
+                Text(text = "No resuelto",
+                    fontSize = 18.sp)
+            }
+        }
+
 
         Spacer(modifier = Modifier
             .height(20.dp))
 
-        Text(text = stringResource(id = R.string.subtitleCategoria),
+        Text(text = "Categoria:",
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(start = 60.dp),
@@ -106,7 +132,7 @@ fun CreateReportForm(
         Spacer(modifier = Modifier
             .height(20.dp))
 
-        Text(text = stringResource(id = R.string.subtitleDescripcionReporte),
+        Text("Descripcion del reporte:",
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(start = 60.dp),
@@ -124,7 +150,7 @@ fun CreateReportForm(
         Spacer(modifier = Modifier
             .height(20.dp))
 
-        Text(text = stringResource(id = R.string.subtitleElegirUbicacion),
+        Text(text = "Elegir ubicacion: ",
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(start = 60.dp),
@@ -142,29 +168,14 @@ fun CreateReportForm(
         Spacer(modifier = Modifier
             .height(30.dp))
 
-        Row(
-            horizontalArrangement = Arrangement.Start,
-        ){
-
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
                 onClick = {}
             ) {
-                Text(text = stringResource(id = R.string.buttonCrearReporte),
+                Text(text = "Editar reporte",
                     fontSize = 18.sp)
             }
 
-            Spacer(modifier = Modifier
-                .width(10.dp))
-
-            Button(
-                colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
-                onClick = {}
-            ) {
-                Text(text = stringResource(R.string.buttonCancelar),
-                    fontSize = 18.sp)
-            }
-        }
 
     }
 }

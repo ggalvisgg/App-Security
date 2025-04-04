@@ -40,13 +40,8 @@ fun TextFieldForm(
                 Text(text = supportingText)
             }
         },
-
         visualTransformation = if(isPassword){ PasswordVisualTransformation() } else { VisualTransformation.None},
         keyboardOptions = keyboardOptions,
-
-        label = {
-            if (value.isNotEmpty()) {Text(text = label)}
-        },
 
         onValueChange = {
             onValueChange(it)
