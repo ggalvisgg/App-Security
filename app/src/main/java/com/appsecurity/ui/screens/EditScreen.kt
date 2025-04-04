@@ -26,6 +26,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.appsecurity.R
 import android.graphics.Color as AndroidColor
 
 @Composable
@@ -50,10 +52,10 @@ fun EditForm(
 
     var email by rememberSaveable { mutableStateOf("") }
 
-    Text(text = "EDITAR \nINFORMACION",
-        fontSize = 25.sp,
+    Text(text = stringResource(id = R.string.titleEditarInformacion),
+        fontSize = 30.sp,
         modifier = Modifier
-            .padding(top=50.dp, start = 25.dp))
+            .padding(top=80.dp, start = 25.dp))
 
     Column(
         modifier = Modifier
@@ -66,7 +68,7 @@ fun EditForm(
         verticalArrangement = Arrangement.Center
     ) {
 
-        Text(text = "Nombre completo",
+        Text(text = stringResource(id = R.string.subtitleName),
             fontSize = 18.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -82,7 +84,7 @@ fun EditForm(
         Spacer(modifier = Modifier
             .height(10.dp))
 
-        Text(text = "Ciudad de residencia",
+        Text(text = stringResource(id = R.string.subtitleCity),
             fontSize = 18.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -98,7 +100,7 @@ fun EditForm(
         Spacer(modifier = Modifier
             .height(10.dp))
 
-        Text(text = "Dirección",
+        Text(text = stringResource(id = R.string.subtitleStreet),
             fontSize = 18.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -114,7 +116,7 @@ fun EditForm(
         Spacer(modifier = Modifier
             .height(10.dp))
 
-        Text(text = "Correo electronico",
+        Text(text = stringResource(id = R.string.subtitleEmail),
             fontSize = 18.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -130,7 +132,7 @@ fun EditForm(
         Spacer(modifier = Modifier
             .height(10.dp))
 
-        Text(text = "Contraseña",
+        Text(text = stringResource(id = R.string.subtitlePassword),
             fontSize = 18.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -144,7 +146,7 @@ fun EditForm(
         )
 
         Spacer(modifier = Modifier
-            .height(15.dp))
+            .height(20.dp))
 
         Row(
             horizontalArrangement = Arrangement.Start,
@@ -154,7 +156,7 @@ fun EditForm(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
                 onClick = {}
             ) {
-                Text(text = "Confirmar",
+                Text(text = stringResource(id = R.string.buttonConfirmar),
                     fontSize = 18.sp)
             }
 
@@ -165,7 +167,7 @@ fun EditForm(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
                 onClick = {}
             ) {
-                Text(text = "Cancelar",
+                Text(text = stringResource(id = R.string.buttonCancelar),
                     fontSize = 18.sp)
             }
         }

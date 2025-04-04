@@ -23,9 +23,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 
 @Composable
 fun RecoverPasswordScreen(){
@@ -57,21 +59,21 @@ fun RecoverPassForm(
         verticalArrangement = Arrangement.Center)
     {
 
-        Text(text = "RECUPERACION DE TU \nDE TU CONTRASEÑA",
+        Text(text = stringResource(id = R.string.titleRecuperarContraseña),
             fontSize = 25.sp,
             textAlign = TextAlign.Center)
 
         Spacer(modifier = Modifier
             .height(50.dp))
 
-        Text(text= "CREAR NUEVA CONTRASEÑA",
+        Text(text= stringResource(id = R.string.titleCrearCntraseña),
             fontSize = 18.sp)
 
         Spacer(modifier = Modifier
             .height(50.dp))
 
         //Hace falta los checkboxs para ver la contraseña y ocultar
-        Text(text = "Nueva contraseña",
+        Text(text = stringResource(id = R.string.subtitleNuevaContraseña),
             fontSize = 18.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -87,7 +89,7 @@ fun RecoverPassForm(
         Spacer(modifier = Modifier
             .height(20.dp))
 
-        Text(text = "Confirma la contraseña",
+        Text(text = stringResource(id = R.string.subtitleConfirmarContraseña),
             fontSize = 18.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -107,14 +109,14 @@ fun RecoverPassForm(
             colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
             onClick = {}
         ) {
-            Text(text = "Aceptar",
+            Text(text = stringResource(id = R.string.buttonAceptar),
                 fontSize = 18.sp)
         }
 
         //este texto debe aparecer cuando la contraseña este configurada
         Spacer(modifier = Modifier
             .height(20.dp))
-        Text(text = "La contraseña fue cambaida con exito!",
+        Text(text = stringResource(id = R.string.textMensajeExito),
             fontSize = 15.sp)
     }
 

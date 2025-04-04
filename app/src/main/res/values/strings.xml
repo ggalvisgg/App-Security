@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">AppSecurity</string>
+
+    <string name="titleRegister">REGISTRO</string>
+    <string name="subtitleRegisterInformation">Informacion personal</string>
+    <string name="subtitleName">Nombre completo</string>
+    <string name="subtitleCity">Ciudad de residencia</string>
+    <string name="subtitleStreet">Dirección</string>
+    <string name="subtitleRegisterData">Datos de acceso</string>
+    <string name="subtitleEmail">Correo electronico</string>
+    <string name="subtitlePassword">Contraseña</string>
+    <string name="buttonTextRegister">Registrarse</string>
+    <string name="textAccount">Ya tienes cuenta?</string>
+    <string name="textEnterHere">Ingresa aquí</string>
+
+    <string name="titleRecuperarContraseña">RECUPERACION \nDE TU CONTRASEÑA</string>
+    <string name="titleCrearCntraseña">CREAR NUEVA CONTRASEÑA</string>
+    <string name="subtitleNuevaContraseña">Nueva contraseña</string>
+    <string name="subtitleConfirmarContraseña">Confirma la contraseña</string>
+    <string name="buttonAceptar">Aceptar</string>
+    <string name="textMensajeExito">La contraseña fue cambaida con exito!</string>
+
+    <string name="titleEditarInformacion">EDITAR \nINFORMACION</string>
+    <string name="buttonConfirmar">Confirmar</string>
+    <string name="buttonCancelar">Cancelar</string>
+
+    <string name="titleCrearReporte">CREAR UN REPORTE</string>
+    <string name="subtitleCargarFoto">Cargar una foto</string>
+    <string name="textIconFoto">Icono de subir foto del reporte creado</string>
+    <string name="subtitleCategoria">Categoria:</string>
+    <string name="subtitleDescripcionReporte">Descripcion del reporte:</string>
+    <string name="subtitleElegirUbicacion">Elegir ubicacion:</string>
+    <string name="buttonCrearReporte">Crear reporte</string>
+
+
+
 </resources>

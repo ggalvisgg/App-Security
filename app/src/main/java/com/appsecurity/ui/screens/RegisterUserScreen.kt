@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -12,6 +13,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +26,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
@@ -31,6 +34,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.sp
 import android.graphics.Color as AndroidColor
+import com.appsecurity.R
 
 @Composable
 fun RegisterUserScreen(){
@@ -67,7 +71,7 @@ fun RegisterForm(
     ) {
 
         Text(
-            text = "REGISTRO",
+            text = stringResource(id = R.string.titleRegister),
             fontSize = 25.sp,
         )
 
@@ -77,7 +81,7 @@ fun RegisterForm(
         )
 
         Text(
-            text = "Informacion personal",
+            text = stringResource(id = R.string.subtitleRegisterInformation),
             fontSize = 20.sp,
         )
 
@@ -87,7 +91,7 @@ fun RegisterForm(
         )
 
         Text(
-            text = "Nombre completo",
+            text = stringResource(id = R.string.subtitleName),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -106,7 +110,7 @@ fun RegisterForm(
         )
 
         Text(
-            text = "Ciudad de residencia",
+            text = stringResource(id = R.string.subtitleCity),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -125,7 +129,7 @@ fun RegisterForm(
         )
 
         Text(
-            text = "Dirección",
+            text = stringResource(id = R.string.subtitleStreet),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -140,11 +144,11 @@ fun RegisterForm(
 
         Spacer(
             modifier = Modifier
-                .height(10.dp)
+                .height(20.dp)
         )
 
         Text(
-            text = "Datos de acceso",
+            text = stringResource(id = R.string.subtitleRegisterData),
             fontSize = 20.sp,
         )
 
@@ -154,7 +158,7 @@ fun RegisterForm(
         )
 
         Text(
-            text = "Correo electronico",
+            text = stringResource(id = R.string.subtitleEmail),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -173,7 +177,7 @@ fun RegisterForm(
         )
 
         Text(
-            text = "Contraseña",
+            text = stringResource(id = R.string.subtitlePassword),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -196,30 +200,30 @@ fun RegisterForm(
                 onClick = {}
             ) {
                 Text(
-                    text = "Registrarse",
+                    text = stringResource(id = R.string.buttonTextRegister),
                     fontSize = 18.sp
                 )
             }
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        Text(
-            buildAnnotatedString {
-                append("Ya tienes cuenta?")
-                val link =
-                    LinkAnnotation.Url(
-                        "https://developer.android.com/jetpack/compose",
-                        TextLinkStyles(SpanStyle(Color(AndroidColor.parseColor("#7251B5"))))
-                    ) {
-                        val url = (it as LinkAnnotation.Url).url
-                        uriHandler.openUri(url)
-                    }
-                withLink(link) { append(" Ingresa aquí") }
-            },
-            fontSize = 18.sp
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = stringResource(id = R.string.textAccount),
+                fontSize = 18.sp
+            )
+            TextButton(
+                onClick = {
 
-
-
+                }
+            ) {
+                Text(
+                    text = stringResource(id = R.string.textEnterHere),
+                    fontSize = 18.sp
+                )
+            }
+        }
     }
 }
