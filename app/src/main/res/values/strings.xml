@@ -93,5 +93,9 @@
 
     <string name="titleReporteRelevante">REPORTES \nRELEVANTES</string>
 
+    <string name="titleReporteSolucionado">REPORTES \nSOLUCIONADOS</string>
+    <string name="buttonSolucionado">Solucionado</string>
+
+
 
 </resources>
