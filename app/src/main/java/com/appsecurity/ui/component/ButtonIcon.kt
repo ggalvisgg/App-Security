@@ -18,9 +18,11 @@ fun ButtonIcon(
     text: String,
     onClick: () -> Unit,
     color: String,
-    enable: Boolean
+    enable: Boolean,
+    modifier : Modifier = Modifier
 ){
     Button (
+        modifier = modifier,
         enabled = enable,
         colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor(color))),
         onClick = onClick)
@@ -29,7 +31,7 @@ fun ButtonIcon(
             imageVector = icon,
             contentDescription = "Icono de inicio",
             modifier = Modifier
-                .padding(3.dp)
+                .padding(2.dp)
         )
         Text(text = text)
     }
