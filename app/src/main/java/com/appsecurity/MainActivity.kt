@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
             //RecoverPasswordScreen()
             //WatchNotificationScreen()
             //ReasonReportScreen()
-            //ManageReportModeratorScreen() -> ESTA DE ULTIMA
+            ManageReportModeratorScreen()
             //WatchComentsScreen()
             //WatchAllComentsScreen()
             //RegisterUserScreen()
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
             //EditReportScreen()
             //InformationAllReportScreen()
             //ReportRelevantScreen()
-            ReportSolvedScreen()
+            //ReportSolvedScreen()
         }
     }
 }
