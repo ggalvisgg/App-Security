@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
             //WatchAccountScreen()
             //UserReportScreen()
             //UserWatchAllReportScreen()
-            UserCreateReportScreen()
+            //UserCreateReportScreen()
             //EditReportScreen()
             //InformationAllReportScreen()
         }

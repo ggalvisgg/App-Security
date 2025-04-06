@@ -16,8 +16,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.Done
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,20 +26,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.text.LinkAnnotation
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextLinkStyles
-import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 import com.appsecurity.ui.component.ButtonIcon
 import com.appsecurity.ui.component.TextFieldForm
-import android.graphics.Color as AndroidColor
 
 @Composable
 fun LoginScreen(){
@@ -65,8 +57,6 @@ fun LoginForm(
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
 
-    val uriHandler = LocalUriHandler.current
-
     Column(
         modifier = Modifier
             .padding()
@@ -75,15 +65,15 @@ fun LoginForm(
         verticalArrangement = Arrangement.Center
     ) {
 
-        Text(text = "INICIAR SESION",
+        Text(text = stringResource(id = R.string.titleLogin),
             fontSize = 25.sp)
 
         Icon(imageVector = Icons.Rounded.AccountCircle,
-            contentDescription = "Logo de la app",
+            contentDescription = stringResource(id = R.string.textIconApp),
             modifier = Modifier
                 .padding(50.dp))
 
-        Text(text = "Correo electronico",
+        Text(text = stringResource(id = R.string.subtitleEmail),
             modifier = Modifier
                 .align (Alignment.Start)
                 .padding(start = 70.dp)
@@ -106,7 +96,7 @@ fun LoginForm(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        Text(text = "Contraseña",
+        Text(text = stringResource(id = R.string.subtitlePassword),
             modifier = Modifier
                 .align (Alignment.Start)
                 .padding(start = 70.dp)
@@ -136,7 +126,7 @@ fun LoginForm(
             }
         ) {
             Text(
-                text = "¿Olvidaste tu contraseña?"
+                text = stringResource(id = R.string.textForgetPassword)
             )
         }
 
@@ -144,7 +134,7 @@ fun LoginForm(
 
         ButtonIcon(
             icon = Icons.Rounded.Done,
-            text = "Iniciar sesion",
+            text = stringResource(id = R.string.textIconLogin),
             onClick = {
                 if(email =="gabriela" && password=="12345678"){
                     Toast.makeText(contex, "Bienvenido", Toast.LENGTH_SHORT).show()
@@ -162,20 +152,18 @@ fun LoginForm(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "No tienes cuenta?"
+                text = stringResource(id = R.string.textNoAccount)
             )
-            //"#7251B5"
+
             TextButton(
                 onClick = {
 
                 }
             ) {
                 Text(
-                    text = "Reqistrate aquí"
+                    text = stringResource(id = R.string.textRegister)
                 )
             }
         }
-
-
     }
 }

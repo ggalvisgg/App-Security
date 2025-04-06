@@ -30,8 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 import java.nio.file.WatchEvent
 import android.graphics.Color as AndroidColor
 
@@ -68,7 +70,7 @@ fun AccountForm(
     ) {
 
         Text(
-            text = "MI CUENTA",
+            text = stringResource(id = R.string.titleCuenta),
             fontSize = 30.sp
         )
 
@@ -77,14 +79,14 @@ fun AccountForm(
 
         Icon(
             imageVector = Icons.Rounded.AccountCircle,
-            contentDescription = "Icono del usuario",
+            contentDescription = stringResource(id = R.string.textIconUsuario),
             Modifier.size(80.dp))
 
         Spacer(modifier = Modifier
             .height(15.dp))
 
         Text(
-            text = "Nombre completo",
+            text = stringResource(id = R.string.subtitleName),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -103,7 +105,7 @@ fun AccountForm(
         )
 
         Text(
-            text = "Ciudad de residencia",
+            text = stringResource(id = R.string.subtitleCity),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -122,7 +124,7 @@ fun AccountForm(
         )
 
         Text(
-            text = "Dirección",
+            text = stringResource(id = R.string.subtitleStreet),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -141,7 +143,7 @@ fun AccountForm(
         )
 
         Text(
-            text = "Correo electronico",
+            text = stringResource(id = R.string.subtitleEmail),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -160,7 +162,7 @@ fun AccountForm(
         )
 
         Text(
-            text = "Contraseña",
+            text = stringResource(id = R.string.subtitlePassword),
             fontSize = 18.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -188,7 +190,7 @@ fun AccountForm(
                 onClick = {}
             ) {
                 Text(
-                    text = "Editar \ninformacion",
+                    text = stringResource(id = R.string.subtitleEditarInformacion),
                     fontSize = 18.sp,
                     textAlign = TextAlign.Center
                 )
@@ -204,7 +206,7 @@ fun AccountForm(
                 onClick = {}
             ) {
                 Text(
-                    text = "Eliminar \ncuenta",
+                    text = stringResource(id = R.string.subtitleEliminarCuenta),
                     fontSize = 18.sp,
                     textAlign = TextAlign.Center
                 )

@@ -31,9 +31,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 
 @Composable
 fun UserWatchAllReportScreen(){
@@ -63,11 +65,11 @@ fun WatchReportForm(
     ){
 
         Text(
-            text = "REPORTES",
+            text = stringResource(id = R.string.titleReportes),
             fontSize = 30.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 12.dp),
+                .padding(top = 30.dp),
             textAlign = TextAlign.Center
         )
 
@@ -79,7 +81,7 @@ fun WatchReportForm(
                 onClick = {}
             ) {
                 Text(
-                    text = "Mis reportes",
+                    text = stringResource(id = R.string.buttonMisReportes),
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center
                 )
@@ -92,7 +94,7 @@ fun WatchReportForm(
                 onClick = {}
             ) {
                 Text(
-                    text = "Relevantes",
+                    text = stringResource(id = R.string.buttonRelevantes),
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center
                 )
@@ -105,7 +107,7 @@ fun WatchReportForm(
                 onClick = {}
             ) {
                 Text(
-                    text = "Resueltos",
+                    text = stringResource(id = R.string.buttonResueltos),
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center
                 )
@@ -126,7 +128,7 @@ fun WatchReportForm(
             ) {
 
                 Icon(imageVector = Icons.Rounded.Done,
-                    contentDescription = "Imagen del reporte",
+                    contentDescription = stringResource(id = R.string.textIconVerificacion),
                     modifier = Modifier
                         .size(20.dp)
                         .align(Alignment.End)
@@ -134,7 +136,7 @@ fun WatchReportForm(
 
                 Icon(
                     imageVector = Icons.Rounded.CheckCircle,
-                    contentDescription = "Imagen del reporte",
+                    contentDescription = stringResource(id = R.string.imagenReporte),
                     modifier = Modifier
                         .size(50.dp)
                 )
@@ -144,7 +146,7 @@ fun WatchReportForm(
                 Text(
                     text = "Comunidad",
                     modifier = Modifier.align(Alignment.Start),
-                    fontSize = 16.sp
+                    fontSize = 20.sp
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
@@ -152,7 +154,7 @@ fun WatchReportForm(
                 Text(
                     text = "Me encantraba yendo hacia mi trabajo y encontre esta basura, debemos ser mas cuidadosos",
                     modifier = Modifier.align(Alignment.Start),
-                    fontSize = 16.sp
+                    fontSize = 18.sp
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -169,7 +171,7 @@ fun WatchReportForm(
                         onClick = {}
                     ) {
                         Text(
-                            text = "Ver",
+                            text = stringResource(id = R.string.buttonVer),
                             fontSize = 18.sp,
                             textAlign = TextAlign.Center
                         )

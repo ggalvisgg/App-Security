@@ -57,7 +57,6 @@ fun RegisterForm(
 ) {
 
     var email by rememberSaveable { mutableStateOf("") }
-    val uriHandler = LocalUriHandler.current
 
     Column(
         modifier = Modifier

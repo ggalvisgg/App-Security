@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">AppSecurity</string>
+    
+    <string name="titleLogin">INICIAR SESION</string>
+    <string name="textIconApp">Logo de la app</string>
+    <string name="textForgetPassword">¿Olvidaste tu contraseña?</string>
+    <string name="textNoAccount">No tienes cuenta?</string>
+    <string name="textRegister">Reqistrate aquí</string>
+    <string name="textIconLogin">Iniciar sesion</string>
 
     <string name="titleRegister">REGISTRO</string>
     <string name="subtitleRegisterInformation">Informacion personal</string>
@@ -32,6 +39,55 @@
     <string name="subtitleElegirUbicacion">Elegir ubicacion:</string>
     <string name="buttonCrearReporte">Crear reporte</string>
 
+    <string name="titleEditarReporte">EDITAR REPORTE</string>
+    <string name="textCargarFoto">Cargar una foto</string>
+    <string name="textIconFotoReporte">Icono de subir foto del reporte creado</string>
+    <string name="buttonResuelto">Resuelto</string>
+    <string name="buttonNoResuelto">No resuelto</string>
+    <string name="buttonEditarReporte">Editar reporte</string>
+
+    <string name="titleForgetPassword">OLVIDASTE TU \nCONTRASEÑA</string>
+    <string name="subtitleRecuperarContraseña">RECUPERACION DE CONTRASEÑA</string>
+    <string name="textCorreo">Ingrese el correo electronico</string>
+    <string name="buttonCorreo">Enviar correo</string>
+
+    <string name="titleReporte">REPORTE</string>
+    <string name="textIconImagenSuceso">Imagen del suceso</string>
+    <string name="buttonInformacion">INFORMACION</string>
+    <string name="buttonComentarios">COMENTARIOS</string>
+    <string name="textIconUsuario">Icono del usuario</string>
+    <string name="textIconDetalleReporte">Icono del detalle del reporte</string>
+    <string name="buttonRelevante">ES RELEVANTE</string>
+
+    <string name="titleReporteRechazado">REPORTE RECHAZADO</string>
+    <string name="textIconLogo">Logo del formulario</string>
+    <string name="subtitleMotivoRechazo">Motivo del rechazo del reporte:</string>
+    <string name="buttonMotivo">Enviar motivo</string>
+    
+    <string name="titleMisReportes">MIS REPORTES</string>
+    <string name="imagenReporte">Imagen del reporte</string>
+    <string name="textIconoVerificacion">Icono de verificacion del reporte</string>
+    <string name="textIconoEditar">Icono de editar reporte</string>
+    <string name="textIconoEliminar">Icono de eliminar reporte</string>
+    <string name="buttonVer">Ver</string>
+    
+    <string name="titleCuenta">MI CUENTA</string>
+    <string name="subtitleEditarInformacion">Editar \ninformacion</string>
+    <string name="subtitleEliminarCuenta">Eliminar \ncuenta</string>
+
+    <string name="titleComentarios">COMENTARIOS</string>
+    <string name="textIconCalificacion">Logo de la calificacion</string>
+    <string name="subtitleDejarComentario">Deja tu comentario</string>
+    <string name="buttonComentar">Comentar</string>
+
+    <string name="titleNotificaciones">NOTIFICACIONES</string>
+    <string name="textIconNotificacion">Logo de la notificación</string>
+
+    <string name="titleReportes">REPORTES</string>
+    <string name="buttonMisReportes">Mis reportes</string>
+    <string name="buttonRelevantes">Relevantes</string>
+    <string name="buttonResueltos">Resueltos</string>
+    <string name="textIconVerificacion">Caja de verificacion</string>
 
 
 </resources>

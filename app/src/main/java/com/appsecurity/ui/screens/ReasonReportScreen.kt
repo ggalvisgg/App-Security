@@ -30,9 +30,11 @@ import androidx.compose.ui.Modifier
 import android.graphics.Color as AndroidColor
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 
 @Composable
 fun ReasonReportScreen(){
@@ -66,7 +68,7 @@ fun ReasonReportForm(
     {
 
         Text(
-            text = "REPORTE RECHAZADO",
+            text = stringResource(id = R.string.titleReporteRechazado),
             fontSize = 25.sp,
             textAlign = TextAlign.Center
         )
@@ -77,12 +79,12 @@ fun ReasonReportForm(
         )
 
         Icon(imageVector = Icons.Rounded.Email,
-            contentDescription = "Logo de la app",
+            contentDescription = stringResource(id = R.string.textIconLogo),
             modifier = Modifier
                 .padding(25.dp)
                 .size(50.dp))
 
-        Text(text = "Motivo del rechazo del reporte: ",
+        Text(text = stringResource(id = R.string.subtitleMotivoRechazo),
             fontSize = 17.sp,
             modifier = Modifier
                 .align (Alignment.Start)
@@ -115,7 +117,7 @@ fun ReasonReportForm(
             colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
             onClick = {}
         ) {
-            Text(text = "Enviar motivo",
+            Text(text = stringResource(id = R.string.buttonMotivo),
                 fontSize = 18.sp)
         }
     }

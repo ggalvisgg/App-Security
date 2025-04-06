@@ -2,7 +2,6 @@ package com.appsecurity.ui.screens
 
 import android.content.Context
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Star
@@ -30,8 +30,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 import android.graphics.Color as AndroidColor
 
 @Composable
@@ -64,11 +66,13 @@ fun WatchAllComentsForm(
         //verticalArrangement = Arrangement.Center
     ){
 
-        Text(text = "COMENTARIOS", 
-            fontSize = 20.sp)
+        Text(text = stringResource(id = R.string.titleComentarios),
+            fontSize = 30.sp,
+            modifier = Modifier
+                .padding(top = 40.dp))
 
         Spacer(modifier = Modifier
-            .height(40.dp))
+            .height(30.dp))
 
         Box(
             modifier = Modifier
@@ -85,20 +89,28 @@ fun WatchAllComentsForm(
                     modifier = Modifier
                         .background(Color.White, shape = RoundedCornerShape(8.dp))
                 ) {
-                    Row{
+                    Row (verticalAlignment = Alignment.CenterVertically){
 
-                        Text(text = "Maria Garces")
+                        Text(text = "Maria Garces",
+                            fontSize = 18.sp)
+
+                        Spacer(modifier = Modifier
+                            .width(10.dp))
 
                         Icon(
                             imageVector = Icons.Rounded.Star,
-                            contentDescription = "Logo de la calificacion",
+                            contentDescription = stringResource(id = R.string.textIconCalificacion),
                             modifier = Modifier
-                                .padding(end = 8.dp)
+                                .padding(end = 4.dp)
                                 .size(30.dp),
                             tint = Color(0xFF63578A),
                             )
                     }
-                    Text(text = "Yo vi un perro igual al que ponen en la imagen")
+
+                    Spacer(modifier = Modifier
+                        .height(5.dp))
+                    Text(text = "Yo vi un perro igual al que ponen en la imagen",
+                        fontSize = 18.sp)
                 }
             }
         }
@@ -106,26 +118,32 @@ fun WatchAllComentsForm(
             Spacer(modifier = Modifier
                 .height(40.dp))
 
-
-            Text(text = "Deja tu comentario")
+            Text(text = stringResource(id = R.string.subtitleDejarComentario),
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .align(Alignment.Start)
+                    .padding(start = 30.dp))
 
             TextField(
                 value = comentario,
                 onValueChange = { comentario = it },
                 label = { Text("Escribe tu comentario...") },
                 modifier = Modifier
-                     .background(Color.White, shape = RoundedCornerShape(8.dp))
+                    .background(Color.White, shape = RoundedCornerShape(8.dp))
                     .padding(8.dp)
             )
 
             Spacer(modifier = Modifier
-                .height(10.dp))
+                .height(8.dp))
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {},
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(end = 30.dp)
             ) {
-                Text(text = "Comentar",
+                Text(text = stringResource(id = R.string.buttonComentar),
                     fontSize = 18.sp)
             }
 
