@@ -89,5 +89,9 @@
     <string name="buttonResueltos">Resueltos</string>
     <string name="textIconVerificacion">Caja de verificacion</string>
 
+    <string name="buttonVerTodos">Ver todos</string>
+
+    <string name="titleReporteRelevante">REPORTES \nRELEVANTES</string>
+
 
 </resources>
