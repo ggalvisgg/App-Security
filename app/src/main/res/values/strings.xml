@@ -96,6 +96,12 @@
     <string name="titleReporteSolucionado">REPORTES \nSOLUCIONADOS</string>
     <string name="buttonSolucionado">Solucionado</string>
 
+    <string name="titleTodosLosReportes">TODOS LOS REPORTES</string>
+    <string name="buttonVerificado">Solucionado</string>
+    <string name="buttonRechazado">Rechazado</string>
+    <string name="buttonEliminado">Solucionado</string>
+    <string name="subtitleUsuario">Usuario: </string>
+
 
 
 </resources>

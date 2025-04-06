@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
             //RecoverPasswordScreen()
             //WatchNotificationScreen()
             //ReasonReportScreen()
-            ManageReportModeratorScreen()
+            //ManageReportModeratorScreen()
             //WatchComentsScreen()
             //WatchAllComentsScreen()
             //RegisterUserScreen()
