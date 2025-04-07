@@ -34,14 +34,19 @@ import androidx.compose.ui.unit.sp
 import com.appsecurity.R
 
 @Composable
-fun ReportRelevantScreen(){
+fun ReportRelevantScreen(
+    navigationToInfoReport : () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         RelevantForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToInfoReport = {
+                navigationToInfoReport()
+            }
         )
     }
 }
@@ -49,7 +54,8 @@ fun ReportRelevantScreen(){
 @Composable
 fun RelevantForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigationToInfoReport : () -> Unit
 ){
 
     Column(
@@ -124,7 +130,9 @@ fun RelevantForm(
 
                 Button(
                     colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                    onClick = {},
+                    onClick = {
+                        navigationToInfoReport()
+                    },
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .padding(top = 8.dp)

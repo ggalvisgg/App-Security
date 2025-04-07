@@ -39,14 +39,19 @@ import com.appsecurity.R
 import com.appsecurity.ui.component.ButtonIcon
 
 @Composable
-fun AllReportsModeratorScreen(){
+fun AllReportsModeratorScreen(
+    navigationToInfoReportModerator : () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         AllReportsForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToInfoReportModerator = {
+                navigationToInfoReportModerator()
+            }
         )
     }
 
@@ -55,7 +60,8 @@ fun AllReportsModeratorScreen(){
 @Composable
 fun AllReportsForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigationToInfoReportModerator : () -> Unit
 ){
 
     Column (
@@ -213,7 +219,9 @@ fun AllReportsForm(
                 ) {
                     Button(
                         colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                        onClick = {}
+                        onClick = {
+                            navigationToInfoReportModerator()
+                        }
                     ) {
                         Text(
                             text = stringResource(id = R.string.buttonVer),

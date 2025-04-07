@@ -43,14 +43,19 @@ import androidx.compose.ui.unit.sp
 import com.appsecurity.R
 
 @Composable
-fun WatchComentsScreen(){
+fun WatchComentsScreen(
+    navigationToAllComents : () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         WatchComentsForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToAllComents = {
+                navigationToAllComents()
+            }
         )
     }
 }
@@ -58,7 +63,8 @@ fun WatchComentsScreen(){
 @Composable
 fun WatchComentsForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigationToAllComents : () -> Unit
 ){
 
     var comentario by rememberSaveable { mutableStateOf("") }
@@ -178,7 +184,9 @@ fun WatchComentsForm(
 
         Button(
             colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-            onClick = {},
+            onClick = {
+                navigationToAllComents()
+            },
             modifier = Modifier
                 .align(Alignment.End)
                 .padding(end=20.dp)

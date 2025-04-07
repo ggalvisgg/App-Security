@@ -36,22 +36,38 @@ import com.appsecurity.R
 import android.graphics.Color as AndroidColor
 
 @Composable
-fun EditReportScreen(){
+fun EditReportScreen(
+    navigateToReportResuelto: () -> Unit,
+    navigateToReportNoResuelto: () -> Unit,
+    navigateToMyReports: () -> Unit
+){
 
     var contex = LocalContext.current
 
     Scaffold { padding ->
         EditReportForm(
-            padding,
-            contex
+            padding = padding,
+            contex = contex,
+            navigateToReportResuelto = {
+                navigateToReportResuelto()
+            },
+            navigateToReportNoResuelto = {
+                navigateToReportNoResuelto()
+            },
+            navigateToMyReports = {
+                navigateToMyReports()
+            }
         )
     }
 }
 
 @Composable
 fun EditReportForm(
-    paddingValues: PaddingValues,
-    contex : Context
+    padding: PaddingValues,
+    contex : Context,
+    navigateToReportResuelto: () -> Unit,
+    navigateToReportNoResuelto: () -> Unit,
+    navigateToMyReports: () -> Unit
 ){
     Column(
         modifier = Modifier
@@ -93,7 +109,9 @@ fun EditReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigateToReportResuelto()
+                }
             ) {
                 Text(text = stringResource(id = R.string.buttonResuelto),
                     fontSize = 18.sp)
@@ -104,7 +122,9 @@ fun EditReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
-                onClick = {}
+                onClick = {
+                    navigateToReportNoResuelto()
+                }
             ) {
                 Text(text = stringResource(id = R.string.buttonNoResuelto),
                     fontSize = 18.sp)
@@ -170,7 +190,9 @@ fun EditReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigateToMyReports()
+                }
             ) {
                 Text(text = stringResource(id = R.string.buttonEditarReporte),
                     fontSize = 18.sp)

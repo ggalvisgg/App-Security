@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.appsecurity.ui.navigation.Navigation
 import com.appsecurity.ui.screens.AllReportsModeratorScreen
 import com.appsecurity.ui.screens.EditReportScreen
 import com.appsecurity.ui.screens.EditScreen
@@ -29,6 +30,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+
+            Navigation()
+
             //LoginScreen()
             //EditScreen()
             //RecoverPasswordScreen()
@@ -47,7 +51,7 @@ class MainActivity : ComponentActivity() {
             //InformationAllReportScreen()
             //ReportRelevantScreen()
             //ReportSolvedScreen()
-            AllReportsModeratorScreen()
+            //AllReportsModeratorScreen()
         }
     }
 }

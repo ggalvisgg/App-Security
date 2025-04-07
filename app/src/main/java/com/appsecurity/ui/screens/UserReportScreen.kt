@@ -38,14 +38,19 @@ import com.appsecurity.R
 import android.graphics.Color as AndroidColor
 
 @Composable
-fun UserReportScreen(){
+fun UserReportScreen(
+    navigateToWatchReport : () -> Unit
+){
 
     var contex = LocalContext.current
 
     Scaffold { padding ->
         ReportForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigateToWatchReport = {
+                navigateToWatchReport()
+            }
         )
     }
 }
@@ -53,7 +58,8 @@ fun UserReportScreen(){
 @Composable
 fun ReportForm(
     padding : PaddingValues,
-    contex : Context
+    contex : Context,
+    navigateToWatchReport : () -> Unit
 ){
     Column (
         modifier = Modifier
@@ -136,7 +142,9 @@ fun ReportForm(
 
                     Button(
                         colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                        onClick = {}
+                        onClick = {
+                            navigateToWatchReport()
+                        }
                     ) {
                         Text(
                             text = stringResource(id = R.string.buttonVer),

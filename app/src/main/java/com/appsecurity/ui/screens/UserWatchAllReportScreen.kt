@@ -38,14 +38,31 @@ import androidx.compose.ui.unit.sp
 import com.appsecurity.R
 
 @Composable
-fun UserWatchAllReportScreen(){
+fun UserWatchAllReportScreen(
+    navigationToReports : () -> Unit,
+    navigationToReportRelevant : () -> Unit,
+    navigationToReportSolved : () -> Unit,
+    navigationToInfo : () -> Unit
+){
 
     var contex = LocalContext.current
 
     Scaffold { padding ->
         WatchReportForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToReports = {
+                navigationToReports()
+            },
+            navigationToReportRelevant = {
+                navigationToReportRelevant()
+            } ,
+            navigationToReportSolved = {
+                navigationToReportSolved()
+            },
+            navigationToInfo = {
+                navigationToInfo()
+            }
         )
     }
 }
@@ -53,7 +70,11 @@ fun UserWatchAllReportScreen(){
 @Composable
 fun WatchReportForm(
     padding : PaddingValues,
-    contex : Context
+    contex : Context,
+    navigationToReports : () -> Unit,
+    navigationToReportRelevant : () -> Unit,
+    navigationToReportSolved : () -> Unit,
+    navigationToInfo : () -> Unit
 ){
 
     Column (
@@ -78,7 +99,9 @@ fun WatchReportForm(
         Row {
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigationToReports()
+                }
             ) {
                 Text(
                     text = stringResource(id = R.string.buttonMisReportes),
@@ -91,7 +114,9 @@ fun WatchReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigationToReportRelevant()
+                }
             ) {
                 Text(
                     text = stringResource(id = R.string.buttonRelevantes),
@@ -104,7 +129,9 @@ fun WatchReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigationToReportSolved()
+                }
             ) {
                 Text(
                     text = stringResource(id = R.string.buttonResueltos),
@@ -168,7 +195,9 @@ fun WatchReportForm(
 
                     Button(
                         colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                        onClick = {}
+                        onClick = {
+                            navigationToInfo()
+                        }
                     ) {
                         Text(
                             text = stringResource(id = R.string.buttonVer),

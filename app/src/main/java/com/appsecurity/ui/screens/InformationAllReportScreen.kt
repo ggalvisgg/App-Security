@@ -34,14 +34,19 @@ import androidx.compose.ui.unit.sp
 import com.appsecurity.R
 
 @Composable
-fun InformationAllReportScreen(){
+fun InformationAllReportScreen(
+    navigationToComents: () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         InformationReportForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToComents = {
+                navigationToComents()
+            }
         )
     }
 }
@@ -49,7 +54,8 @@ fun InformationAllReportScreen(){
 @Composable
 fun InformationReportForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigationToComents: () -> Unit
 ){
 
     Column(
@@ -75,7 +81,7 @@ fun InformationReportForm(
         Spacer(modifier = Modifier
             .height(5.dp))
 
-        Text(text = "Categoria: Mascotas",
+        Text(text = "Categoria: ",
             fontSize = 20.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -111,7 +117,9 @@ fun InformationReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color.White),
-                onClick = {}
+                onClick = {
+                    navigationToComents()
+                }
             ) {
                 Text(text = stringResource(id = R.string.buttonComentarios),
                     fontSize = 18.sp,

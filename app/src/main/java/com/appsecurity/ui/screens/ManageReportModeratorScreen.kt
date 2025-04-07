@@ -33,14 +33,23 @@ import androidx.compose.ui.unit.sp
 import com.appsecurity.R
 
 @Composable
-fun ManageReportModeratorScreen(){
+fun ManageReportModeratorScreen(
+    navigationToComents : () -> Unit,
+    navigationToResuelto : () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         ManageReportModeratorForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToComents = {
+                navigationToComents()
+            },
+            navigationToResuelto = {
+                navigationToResuelto()
+            }
         )
     }
 }
@@ -48,7 +57,9 @@ fun ManageReportModeratorScreen(){
 @Composable
 fun ManageReportModeratorForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigationToComents : () -> Unit,
+    navigationToResuelto : () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -131,7 +142,9 @@ fun ManageReportModeratorForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color.White),
-                onClick = {}
+                onClick = {
+                    navigationToComents()
+                }
             ) {
                 Text(
                     text = stringResource(id = R.string.buttonComentarios),
@@ -195,7 +208,9 @@ fun ManageReportModeratorForm(
 
         Button(
             colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-            onClick = {}
+            onClick = {
+                navigationToResuelto()
+            }
         ) {
             Text(
                 text = stringResource(id = R.string.buttonResuelto),

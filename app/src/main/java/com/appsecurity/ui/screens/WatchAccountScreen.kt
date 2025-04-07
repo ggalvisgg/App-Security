@@ -38,14 +38,19 @@ import java.nio.file.WatchEvent
 import android.graphics.Color as AndroidColor
 
 @Composable
-fun WatchAccountScreen(){
+fun WatchAccountScreen(
+    navigationToEdit: () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         AccountForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToEdit = {
+                navigationToEdit()
+            }
         )
     }
 }
@@ -53,7 +58,8 @@ fun WatchAccountScreen(){
 @Composable
 fun AccountForm(
     padding : PaddingValues,
-    contex : Context
+    contex : Context,
+    navigationToEdit: () -> Unit
 ) {
 
     var email by rememberSaveable { mutableStateOf("") }
@@ -187,7 +193,9 @@ fun AccountForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigationToEdit()
+                }
             ) {
                 Text(
                     text = stringResource(id = R.string.subtitleEditarInformacion),

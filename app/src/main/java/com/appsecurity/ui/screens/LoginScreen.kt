@@ -36,14 +36,27 @@ import com.appsecurity.ui.component.ButtonIcon
 import com.appsecurity.ui.component.TextFieldForm
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(
+    navigateToSingUp : () -> Unit,
+    navigateToPasswordForget: () -> Unit,
+    navigateToHomeUser : () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         LoginForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigateToSingUp = {
+                navigateToSingUp()
+            },
+            navigateToPasswordForget = {
+                navigateToPasswordForget()
+            },
+            navigateToHomeUser =  {
+                navigateToHomeUser()
+            }
         )
     }
 }
@@ -51,7 +64,10 @@ fun LoginScreen(){
 @Composable
 fun LoginForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigateToSingUp: () -> Unit,
+    navigateToPasswordForget: () -> Unit,
+    navigateToHomeUser: () -> Unit
 ){
 
     var email by rememberSaveable { mutableStateOf("") }
@@ -122,7 +138,7 @@ fun LoginForm(
                 .align(Alignment.End)
                 .padding(end=20.dp),
             onClick = {
-
+                navigateToPasswordForget()
             }
         ) {
             Text(
@@ -136,8 +152,9 @@ fun LoginForm(
             icon = Icons.Rounded.Done,
             text = stringResource(id = R.string.textIconLogin),
             onClick = {
-                if(email =="gabriela" && password=="12345678"){
+                if(email =="gabriela@gmail.com" && password=="12345678"){
                     Toast.makeText(contex, "Bienvenido", Toast.LENGTH_SHORT).show()
+                    navigateToHomeUser()
                 }else{
                     Toast.makeText(contex, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show()
                 }
@@ -157,7 +174,7 @@ fun LoginForm(
 
             TextButton(
                 onClick = {
-
+                    navigateToSingUp()
                 }
             ) {
                 Text(
