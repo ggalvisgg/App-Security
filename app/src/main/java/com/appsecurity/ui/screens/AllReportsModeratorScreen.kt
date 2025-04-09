@@ -20,7 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Done
-import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -36,45 +36,32 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.appsecurity.R
+import com.appsecurity.ui.component.ButtonIcon
 
 @Composable
-fun UserWatchAllReportScreen(
-    navigationToReports : () -> Unit,
-    navigationToReportRelevant : () -> Unit,
-    navigationToReportSolved : () -> Unit,
-    navigationToInfo : () -> Unit
+fun AllReportsModeratorScreen(
+    navigationToInfoReportModerator : () -> Unit
 ){
 
-    var contex = LocalContext.current
+    val contex = LocalContext.current
 
     Scaffold { padding ->
-        WatchReportForm(
+        AllReportsForm(
             padding = padding,
             contex = contex,
-            navigationToReports = {
-                navigationToReports()
-            },
-            navigationToReportRelevant = {
-                navigationToReportRelevant()
-            } ,
-            navigationToReportSolved = {
-                navigationToReportSolved()
-            },
-            navigationToInfo = {
-                navigationToInfo()
+            navigationToInfoReportModerator = {
+                navigationToInfoReportModerator()
             }
         )
     }
+
 }
 
 @Composable
-fun WatchReportForm(
-    padding : PaddingValues,
-    contex : Context,
-    navigationToReports : () -> Unit,
-    navigationToReportRelevant : () -> Unit,
-    navigationToReportSolved : () -> Unit,
-    navigationToInfo : () -> Unit
+fun AllReportsForm(
+    padding: PaddingValues,
+    contex: Context,
+    navigationToInfoReportModerator : () -> Unit
 ){
 
     Column (
@@ -86,7 +73,7 @@ fun WatchReportForm(
     ){
 
         Text(
-            text = stringResource(id = R.string.titleReportes),
+            text = stringResource(id = R.string.titleTodosLosReportes),
             fontSize = 30.sp,
             modifier = Modifier
                 .fillMaxWidth()
@@ -97,14 +84,13 @@ fun WatchReportForm(
         Spacer(modifier = Modifier.height(10.dp))
 
         Row {
+
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {
-                    navigationToReports()
-                }
+                onClick = {}
             ) {
                 Text(
-                    text = stringResource(id = R.string.buttonMisReportes),
+                    text = stringResource(id = R.string.buttonVerificado),
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center
                 )
@@ -114,12 +100,10 @@ fun WatchReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {
-                    navigationToReportRelevant()
-                }
+                onClick = {}
             ) {
                 Text(
-                    text = stringResource(id = R.string.buttonRelevantes),
+                    text = stringResource(id = R.string.buttonRechazado),
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center
                 )
@@ -129,12 +113,10 @@ fun WatchReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {
-                    navigationToReportSolved()
-                }
+                onClick = {}
             ) {
                 Text(
-                    text = stringResource(id = R.string.buttonResueltos),
+                    text = stringResource(id = R.string.buttonEliminado),
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center
                 )
@@ -154,21 +136,65 @@ fun WatchReportForm(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                Icon(imageVector = Icons.Rounded.Done,
-                    contentDescription = stringResource(id = R.string.textIconVerificacion),
-                    modifier = Modifier
-                        .size(20.dp)
-                        .align(Alignment.End)
-                )
-
                 Icon(
                     imageVector = Icons.Rounded.CheckCircle,
                     contentDescription = stringResource(id = R.string.imagenReporte),
-                    modifier = Modifier
-                        .size(50.dp)
+                    modifier = Modifier.size(50.dp)
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
+
+                Button(
+                    onClick = {},
+                    colors = ButtonDefaults.buttonColors(Color(0xFF7251B5)),
+                    modifier = Modifier
+                        .align(Alignment.Start)
+                        .height(35.dp)
+                        .width(120.dp)
+                ) {
+                    Text(
+                        text = "Verificado",
+                        fontSize = 14.sp,
+                        color = Color.White
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.subtitleUsuario),
+                        fontSize = 20.sp
+                    )
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.CheckCircle,
+                            contentDescription = "Verificado",
+                            tint = Color(0xFF9177C7)
+                        )
+                        Icon(
+                            imageVector = Icons.Rounded.Warning,
+                            contentDescription = "Rechazado",
+                            tint = Color(0xFF9177C7)
+                        )
+                        Icon(
+                            imageVector = Icons.Rounded.Delete,
+                            contentDescription = "Eliminado",
+                            tint = Color(0xFF9177C7)
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
                     text = "Comunidad",
@@ -187,16 +213,14 @@ fun WatchReportForm(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-
                     Button(
                         colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
                         onClick = {
-                            navigationToInfo()
+                            navigationToInfoReportModerator()
                         }
                     ) {
                         Text(

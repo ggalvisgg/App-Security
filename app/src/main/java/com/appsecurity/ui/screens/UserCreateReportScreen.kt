@@ -36,22 +36,32 @@ import androidx.compose.ui.res.stringResource
 import com.appsecurity.R
 
 @Composable
-fun UserCreateReportScreen(){
-
+fun UserCreateReportScreen(
+    navigateToHome: () -> Unit,
+    navigateToUserReport: () -> Unit
+){
     var contex = LocalContext.current
 
     Scaffold { padding ->
         CreateReportForm(
-            padding,
-            contex
+            padding = padding,
+            contex = contex,
+            navigateToHome = {
+                navigateToHome()
+            },
+            navigateToUserReport = {
+                navigateToUserReport()
+            }
         )
     }
 }
 
 @Composable
 fun CreateReportForm(
-    paddingValues: PaddingValues,
-    contex : Context
+    padding: PaddingValues,
+    contex : Context,
+    navigateToHome: () -> Unit,
+    navigateToUserReport : () -> Unit
 ){
     Column(
         modifier = Modifier
@@ -148,7 +158,9 @@ fun CreateReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigateToUserReport()
+                }
             ) {
                 Text(text = stringResource(id = R.string.buttonCrearReporte),
                     fontSize = 18.sp)
@@ -159,7 +171,9 @@ fun CreateReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
-                onClick = {}
+                onClick = {
+                    navigateToHome()
+                }
             ) {
                 Text(text = stringResource(R.string.buttonCancelar),
                     fontSize = 18.sp)

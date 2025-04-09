@@ -28,18 +28,25 @@ import android.graphics.Color as AndroidColor
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.TextToolbar
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 
 @Composable
-fun InformationAllReportScreen(){
+fun InformationAllReportScreen(
+    navigationToComents: () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         InformationReportForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToComents = {
+                navigationToComents()
+            }
         )
     }
 }
@@ -47,7 +54,8 @@ fun InformationAllReportScreen(){
 @Composable
 fun InformationReportForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigationToComents: () -> Unit
 ){
 
     Column(
@@ -58,7 +66,7 @@ fun InformationReportForm(
         verticalArrangement = Arrangement.Center
     ){
 
-        Text(text = "REPORTE",
+        Text(text = stringResource(id = R.string.titleReporte),
             fontSize = 30.sp)
 
         Spacer(modifier = Modifier
@@ -73,7 +81,7 @@ fun InformationReportForm(
         Spacer(modifier = Modifier
             .height(5.dp))
 
-        Text(text = "Categoria: Mascotas",
+        Text(text = "Categoria: ",
             fontSize = 20.sp,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -84,12 +92,12 @@ fun InformationReportForm(
 
         Row {
             Icon(imageVector = Icons.Rounded.AccountBox,
-                contentDescription = "Imagen del suceso",
+                contentDescription = stringResource(id = R.string.textIconImagenSuceso),
                 modifier = Modifier
                     .size(80.dp))
 
             Icon(imageVector = Icons.Rounded.AccountBox,
-                contentDescription = "Imagen del suceso")
+                contentDescription = stringResource(id = R.string.textIconImagenSuceso))
         }
 
         Spacer(modifier = Modifier
@@ -100,7 +108,7 @@ fun InformationReportForm(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
                 onClick = {}
             ) {
-                Text(text = "INFORMACION",
+                Text(text = stringResource(id = R.string.buttonInformacion),
                     fontSize = 15.sp)
             }
 
@@ -109,9 +117,11 @@ fun InformationReportForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color.White),
-                onClick = {}
+                onClick = {
+                    navigationToComents()
+                }
             ) {
-                Text(text = "COMENTARIOS",
+                Text(text = stringResource(id = R.string.buttonComentarios),
                     fontSize = 18.sp,
                     color = Color.Black)
             }
@@ -128,7 +138,7 @@ fun InformationReportForm(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         imageVector = Icons.Rounded.Person,
-                        contentDescription = "Icono del usuario",
+                        contentDescription = stringResource(id = R.string.textIconUsuario),
                         modifier = Modifier
                             .size(40.dp)
                     )
@@ -140,7 +150,7 @@ fun InformationReportForm(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         imageVector = Icons.Rounded.MailOutline,
-                        contentDescription = "Icono del detalle del reporte",
+                        contentDescription = stringResource(id = R.string.textIconDetalleReporte),
                         modifier = Modifier
                             .size(40.dp)
                     )
@@ -172,7 +182,7 @@ fun InformationReportForm(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
                 onClick = {}
             ) {
-                Text(text = "ES RELEVANTE",
+                Text(text = stringResource(id = R.string.buttonRelevante),
                     fontSize = 18.sp)
             }
         }

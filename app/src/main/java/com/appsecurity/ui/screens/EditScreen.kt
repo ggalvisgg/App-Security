@@ -31,23 +31,26 @@ import com.appsecurity.R
 import android.graphics.Color as AndroidColor
 
 @Composable
-fun EditScreen(){
+fun EditScreen(navigationToAccount: () -> Unit){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         EditForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigationToAccount = {
+                navigationToAccount()
+            }
         )
     }
-
 }
 
 @Composable
 fun EditForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigationToAccount : () -> Unit
 ){
 
     var email by rememberSaveable { mutableStateOf("") }
@@ -154,7 +157,9 @@ fun EditForm(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
+                onClick = {
+                    navigationToAccount()
+                }
             ) {
                 Text(text = stringResource(id = R.string.buttonConfirmar),
                     fontSize = 18.sp)

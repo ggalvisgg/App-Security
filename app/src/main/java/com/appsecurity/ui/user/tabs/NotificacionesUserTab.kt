@@ -1,12 +1,9 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.user.tabs
 
-import android.content.Context
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,39 +15,19 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.appsecurity.R
-import android.graphics.Color as AndroidColor
 
 @Composable
-fun WatchNotificationScreen(){
-
-    val contex = LocalContext.current
-
-    Scaffold { padding ->
-        WatchNotiForm(
-            padding = padding,
-            contex = contex
-        )
-    }
-
-}
-
-@Composable
-fun WatchNotiForm(
-    padding: PaddingValues,
-    contex: Context
-){
+fun NotificacionesUserTab(){
 
     Column (
         modifier = Modifier
@@ -86,7 +63,7 @@ fun WatchNotiForm(
                     modifier = Modifier
                         .padding(end = 8.dp)
                         .size(40.dp),
-                tint = Color(0xFF63578A)
+                    tint = Color(0xFF63578A)
                 )
 
                 Spacer(modifier = Modifier
@@ -105,4 +82,5 @@ fun WatchNotiForm(
             }
         }
     }
+
 }

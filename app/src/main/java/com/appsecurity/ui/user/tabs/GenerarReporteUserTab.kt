@@ -1,9 +1,8 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.user.tabs
 
-import android.content.Context
+import android.graphics.Color as AndroidColor
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +16,6 @@ import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -28,50 +26,20 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.appsecurity.R
-import android.graphics.Color as AndroidColor
 
 @Composable
-fun EditReportScreen(
-    navigateToReportResuelto: () -> Unit,
-    navigateToReportNoResuelto: () -> Unit,
-    navigateToMyReports: () -> Unit
+fun GenerarReporteUserTab(
+    navigateToHome: () -> Unit,
+    navigateToUserReport : () -> Unit
 ){
 
-    var contex = LocalContext.current
-
-    Scaffold { padding ->
-        EditReportForm(
-            padding = padding,
-            contex = contex,
-            navigateToReportResuelto = {
-                navigateToReportResuelto()
-            },
-            navigateToReportNoResuelto = {
-                navigateToReportNoResuelto()
-            },
-            navigateToMyReports = {
-                navigateToMyReports()
-            }
-        )
-    }
-}
-
-@Composable
-fun EditReportForm(
-    padding: PaddingValues,
-    contex : Context,
-    navigateToReportResuelto: () -> Unit,
-    navigateToReportNoResuelto: () -> Unit,
-    navigateToMyReports: () -> Unit
-){
     Column(
         modifier = Modifier
-            .padding(10.dp, top=50.dp)
+            .padding(10.dp, top = 50.dp)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -79,7 +47,7 @@ fun EditReportForm(
 
         var nuevoReporte by rememberSaveable { mutableStateOf("") }
 
-        Text(text = stringResource(id = R.string.titleEditarReporte),
+        Text(text = stringResource(id = R.string.titleCrearReporte),
             fontSize = 30.sp,
             //modifier = Modifier.padding(top =12 .dp)
         )
@@ -91,45 +59,15 @@ fun EditReportForm(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(text = stringResource(id = R.string.textCargarFoto))
+            Text(text = stringResource(id = R.string.titleCrearReporte))
 
             Icon(imageVector = Icons.Rounded.Phone,
-                contentDescription = stringResource(id = R.string.textIconFotoReporte),
+                contentDescription = "Icono de subir foto del reporte creado",
                 modifier = Modifier
                     .size(20.dp)
                     .align(Alignment.Top))
         }
 
-        Spacer(modifier = Modifier
-            .height(20.dp))
-
-        Row(
-            horizontalArrangement = Arrangement.Start,
-        ){
-
-            Button(
-                colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {
-                    navigateToReportResuelto()
-                }
-            ) {
-                Text(text = stringResource(id = R.string.buttonResuelto),
-                    fontSize = 18.sp)
-            }
-
-            Spacer(modifier = Modifier
-                .width(10.dp))
-
-            Button(
-                colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
-                onClick = {
-                    navigateToReportNoResuelto()
-                }
-            ) {
-                Text(text = stringResource(id = R.string.buttonNoResuelto),
-                    fontSize = 18.sp)
-            }
-        }
 
         Spacer(modifier = Modifier
             .height(20.dp))
@@ -188,14 +126,34 @@ fun EditReportForm(
         Spacer(modifier = Modifier
             .height(30.dp))
 
+        Row(
+            horizontalArrangement = Arrangement.Start,
+        ){
+
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
                 onClick = {
-                    navigateToMyReports()
+                    navigateToUserReport()
                 }
             ) {
-                Text(text = stringResource(id = R.string.buttonEditarReporte),
+                Text(text = stringResource(id = R.string.buttonCrearReporte),
                     fontSize = 18.sp)
             }
+
+            Spacer(modifier = Modifier
+                .width(10.dp))
+
+            Button(
+                colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
+                onClick = {
+                    navigateToHome()
+                }
+            ) {
+                Text(text = stringResource(R.string.buttonCancelar),
+                    fontSize = 18.sp)
+            }
+        }
+
     }
+
 }

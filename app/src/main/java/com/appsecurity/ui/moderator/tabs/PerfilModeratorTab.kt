@@ -1,16 +1,11 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.moderator.tabs
 
-import android.content.Context
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import android.graphics.Color as AndroidColor
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,45 +17,24 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.appsecurity.R
-import java.nio.file.WatchEvent
-import android.graphics.Color as AndroidColor
 
 @Composable
-fun WatchAccountScreen(
-    navigationToEdit: () -> Unit
+fun PerfilModeratorTab(
+    navigationToEdit : () -> Unit
 ){
-
-    val contex = LocalContext.current
-
-    Scaffold { padding ->
-        AccountForm(
-            padding = padding,
-            contex = contex,
-            navigationToEdit = {
-                navigationToEdit()
-            }
-        )
-    }
-}
-
-@Composable
-fun AccountForm(
-    padding : PaddingValues,
-    contex : Context,
-    navigationToEdit: () -> Unit
-) {
 
     var email by rememberSaveable { mutableStateOf("") }
 
@@ -68,9 +42,7 @@ fun AccountForm(
         modifier = Modifier
             .padding()
             .fillMaxSize(),
-        //verticalArrangement = Arrangement.Top,
-        //verticalArrangement = Arrangement.Center
-        //horizontalAlignment = Alignment.Start
+
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -102,7 +74,7 @@ fun AccountForm(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Andrea Martina Giraldo") }
+            label = { Text("Simon Giraldo Lopez") }
         )
 
         Spacer(
@@ -121,7 +93,7 @@ fun AccountForm(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Quimbaya") }
+            label = { Text("Armenia") }
         )
 
         Spacer(
@@ -140,7 +112,7 @@ fun AccountForm(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("MZ 4 CRA 3") }
+            label = { Text("BRR LA SOLEDAD CRA 47") }
         )
 
         Spacer(
@@ -159,7 +131,7 @@ fun AccountForm(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("correo@gmail.com") }
+            label = { Text("admi@gmail.com") }
         )
 
         Spacer(
@@ -221,4 +193,5 @@ fun AccountForm(
             }
         }
     }
+
 }

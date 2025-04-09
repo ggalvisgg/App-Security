@@ -23,9 +23,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 import android.graphics.Color as AndroidColor
 
 @Composable
@@ -57,23 +59,23 @@ fun ForgetPassForm(
         verticalArrangement = Arrangement.Center
     ){
 
-        Text(text = "OLVIDASTE TU \nCONTRASEÑA",
-                fontSize = 20.sp)
+        Text(text = stringResource(id = R.string.titleForgetPassword),
+                fontSize = 30.sp)
 
         Spacer(modifier = Modifier
             .height(50.dp))
 
-        Text(text = "RECUPERACION DE CONTRASEÑA",
-            fontSize = 15.sp)
+        Text(text = stringResource(id = R.string.subtitleRecuperarContraseña),
+            fontSize = 23.sp)
+
+        Spacer(modifier = Modifier
+            .height(20.dp))
+
+        Text(text = stringResource(id = R.string.textCorreo),
+            fontSize = 18.sp)
 
         Spacer(modifier = Modifier
             .height(15.dp))
-
-        Text(text = "Ingrese el correo electronico",
-            fontSize = 13.sp)
-
-        Spacer(modifier = Modifier
-            .height(10.dp))
 
         TextField(
             value = nuevaContraseña,
@@ -88,7 +90,7 @@ fun ForgetPassForm(
             colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
             onClick = {}
         ) {
-            Text(text = "Enviar correo",
+            Text(text = stringResource(id = R.string.buttonCorreo),
                 fontSize = 18.sp)
         }
     }

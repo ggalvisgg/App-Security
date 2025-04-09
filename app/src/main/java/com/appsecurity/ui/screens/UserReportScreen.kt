@@ -30,20 +30,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.FirstBaseline
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.appsecurity.R
 import android.graphics.Color as AndroidColor
 
 @Composable
-fun UserReportScreen(){
+fun UserReportScreen(
+    navigateToWatchReport : () -> Unit
+){
 
     var contex = LocalContext.current
 
     Scaffold { padding ->
         ReportForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigateToWatchReport = {
+                navigateToWatchReport()
+            }
         )
     }
 }
@@ -51,7 +58,8 @@ fun UserReportScreen(){
 @Composable
 fun ReportForm(
     padding : PaddingValues,
-    contex : Context
+    contex : Context,
+    navigateToWatchReport : () -> Unit
 ){
     Column (
         modifier = Modifier
@@ -60,7 +68,7 @@ fun ReportForm(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
-        Text(text = "MIS REPORTES",
+        Text(text = stringResource(id = R.string.titleMisReportes),
             fontSize = 30.sp)
 
         Spacer(modifier = Modifier
@@ -77,7 +85,7 @@ fun ReportForm(
             ) {
 
                 Icon(imageVector = Icons.Rounded.Done,
-                    contentDescription = "Imagen del reporte",
+                    contentDescription = stringResource(id = R.string.imagenReporte),
                     modifier = Modifier
                         .size(20.dp)
                         .align(Alignment.End)
@@ -85,7 +93,7 @@ fun ReportForm(
 
                 Icon(
                     imageVector = Icons.Rounded.CheckCircle,
-                    contentDescription = "Imagen del reporte",
+                    contentDescription = stringResource(id = R.string.textIconoVerificacion),
                     modifier = Modifier
                         .size(50.dp)
                 )
@@ -116,7 +124,7 @@ fun ReportForm(
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Edit,
-                        contentDescription = "Icono de editar reporte",
+                        contentDescription = stringResource(id = R.string.textIconoEditar),
                         modifier = Modifier
                             .padding(end = 8.dp)
                             .size(30.dp),
@@ -125,7 +133,7 @@ fun ReportForm(
 
                     Icon(
                         imageVector = Icons.Rounded.Delete,
-                        contentDescription = "Icono de eliminar reporte",
+                        contentDescription = stringResource(id = R.string.textIconoEliminar),
                         modifier = Modifier
                             .padding(end = 8.dp)
                             .size(30.dp),
@@ -134,10 +142,12 @@ fun ReportForm(
 
                     Button(
                         colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                        onClick = {}
+                        onClick = {
+                            navigateToWatchReport()
+                        }
                     ) {
                         Text(
-                            text = "Ver",
+                            text = stringResource(id = R.string.buttonVer),
                             fontSize = 18.sp,
                             textAlign = TextAlign.Center
                         )

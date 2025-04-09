@@ -37,14 +37,19 @@ import android.graphics.Color as AndroidColor
 import com.appsecurity.R
 
 @Composable
-fun RegisterUserScreen(){
+fun RegisterUserScreen(
+    navigateToLogin: () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         RegisterForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+            navigateToLogin = {
+                navigateToLogin()
+            }
         )
     }
 
@@ -53,11 +58,11 @@ fun RegisterUserScreen(){
 @Composable
 fun RegisterForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navigateToLogin: () -> Unit
 ) {
 
     var email by rememberSaveable { mutableStateOf("") }
-    val uriHandler = LocalUriHandler.current
 
     Column(
         modifier = Modifier
@@ -216,7 +221,7 @@ fun RegisterForm(
             )
             TextButton(
                 onClick = {
-
+                    navigateToLogin()
                 }
             ) {
                 Text(

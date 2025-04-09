@@ -1,12 +1,10 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.user.tabs
 
-import android.content.Context
 import android.graphics.Color as AndroidColor
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,19 +16,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Done
-import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -38,39 +32,7 @@ import androidx.compose.ui.unit.sp
 import com.appsecurity.R
 
 @Composable
-fun UserWatchAllReportScreen(
-    navigationToReports : () -> Unit,
-    navigationToReportRelevant : () -> Unit,
-    navigationToReportSolved : () -> Unit,
-    navigationToInfo : () -> Unit
-){
-
-    var contex = LocalContext.current
-
-    Scaffold { padding ->
-        WatchReportForm(
-            padding = padding,
-            contex = contex,
-            navigationToReports = {
-                navigationToReports()
-            },
-            navigationToReportRelevant = {
-                navigationToReportRelevant()
-            } ,
-            navigationToReportSolved = {
-                navigationToReportSolved()
-            },
-            navigationToInfo = {
-                navigationToInfo()
-            }
-        )
-    }
-}
-
-@Composable
-fun WatchReportForm(
-    padding : PaddingValues,
-    contex : Context,
+fun ReportesUserTab(
     navigationToReports : () -> Unit,
     navigationToReportRelevant : () -> Unit,
     navigationToReportSolved : () -> Unit,

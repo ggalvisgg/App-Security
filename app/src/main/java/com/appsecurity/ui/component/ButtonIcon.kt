@@ -1,10 +1,7 @@
 package com.appsecurity.ui.component
 
 import android.graphics.Color as AndroidColor
-import android.widget.Toast
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Done
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -21,9 +18,11 @@ fun ButtonIcon(
     text: String,
     onClick: () -> Unit,
     color: String,
-    enable: Boolean
+    enable: Boolean,
+    modifier : Modifier = Modifier
 ){
     Button (
+        modifier = modifier,
         enabled = enable,
         colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor(color))),
         onClick = onClick)
@@ -32,7 +31,7 @@ fun ButtonIcon(
             imageVector = icon,
             contentDescription = "Icono de inicio",
             modifier = Modifier
-                .padding(3.dp)
+                .padding(2.dp)
         )
         Text(text = text)
     }
