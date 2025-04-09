@@ -33,6 +33,7 @@ import com.appsecurity.ui.screens.WatchNotificationScreen
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
+import com.appsecurity.ui.moderator.navigation.RouteModerator
 
 @Composable
 fun Navigation(){
@@ -198,7 +199,11 @@ fun Navigation(){
             }
 
             composable<RouteScreen.ReasonReport>{
-                ReasonReportScreen()
+                ReasonReportScreen(
+                    navegationToReportes = {
+                        navController.navigate(RouteModerator.Reportes)
+                    }
+                )
             }
 
             composable<RouteScreen.ManageReportModerator>{

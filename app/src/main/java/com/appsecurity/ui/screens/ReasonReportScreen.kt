@@ -37,14 +37,20 @@ import androidx.compose.ui.unit.sp
 import com.appsecurity.R
 
 @Composable
-fun ReasonReportScreen(){
+fun ReasonReportScreen(
+    navegationToReportes : () -> Unit
+){
 
     val contex = LocalContext.current
 
     Scaffold { padding ->
         ReasonReportForm(
             padding = padding,
-            contex = contex
+            contex = contex,
+
+            navegationToReportes = {
+                navegationToReportes()
+            }
         )
     }
 
@@ -53,7 +59,8 @@ fun ReasonReportScreen(){
 @Composable
 fun ReasonReportForm(
     padding: PaddingValues,
-    contex: Context
+    contex: Context,
+    navegationToReportes : () -> Unit
 ) {
 
     var motivo by rememberSaveable { mutableStateOf("") }
@@ -115,7 +122,9 @@ fun ReasonReportForm(
 
         Button(
             colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-            onClick = {}
+            onClick = {
+                navegationToReportes()
+            }
         ) {
             Text(text = stringResource(id = R.string.buttonMotivo),
                 fontSize = 18.sp)
