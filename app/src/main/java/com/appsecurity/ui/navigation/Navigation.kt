@@ -2,9 +2,14 @@ package com.appsecurity.ui.navigation
 
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.appsecurity.ui.moderator.HomeModeratorScreen
 import com.appsecurity.ui.screens.AllReportsModeratorScreen
 import com.appsecurity.ui.screens.EditReportScreen
 import com.appsecurity.ui.screens.EditScreen
@@ -25,6 +30,9 @@ import com.appsecurity.ui.screens.WatchAccountScreen
 import com.appsecurity.ui.screens.WatchAllComentsScreen
 import com.appsecurity.ui.screens.WatchComentsScreen
 import com.appsecurity.ui.screens.WatchNotificationScreen
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
 
 @Composable
 fun Navigation(){
@@ -35,7 +43,7 @@ fun Navigation(){
     Surface {
         NavHost(
             navController = navController,
-            startDestination = RouteScreen.HomeLogueado
+            startDestination = RouteScreen.Login
         ) {
 
             composable<RouteScreen.Login>{
@@ -47,7 +55,10 @@ fun Navigation(){
                         navController.navigate(RouteScreen.ForgetPassword)
                     },
                     navigateToHomeUser = {
-                        navController.navigate(RouteScreen.HomeLogueado)
+                        navController.navigate(RouteScreen.HomeLogueadoUser)
+                    },
+                    navigateToHomeModerator = {
+                        navController.navigate(RouteScreen.HomeLogueadoAdmi)
                     }
                 )
             }
@@ -68,8 +79,12 @@ fun Navigation(){
                 RecoverPasswordScreen()
             }
 
-            composable<RouteScreen.HomeLogueado>{
+            composable<RouteScreen.HomeLogueadoUser>{
                 HomeUserScreen()
+            }
+
+            composable<RouteScreen.HomeLogueadoAdmi>{
+                HomeModeratorScreen()
             }
 
             composable<RouteScreen.WatchAccount>{
@@ -91,7 +106,7 @@ fun Navigation(){
             composable<RouteScreen.CreateReport>{
                 UserCreateReportScreen(
                     navigateToHome = {
-                        navController.navigate(RouteScreen.HomeLogueado)
+                        navController.navigate(RouteScreen.HomeLogueadoUser)
                     },
                     navigateToUserReport = {
                         navController.navigate(RouteScreen.UserReport)

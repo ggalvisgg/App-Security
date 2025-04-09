@@ -39,7 +39,8 @@ import com.appsecurity.ui.component.TextFieldForm
 fun LoginScreen(
     navigateToSingUp : () -> Unit,
     navigateToPasswordForget: () -> Unit,
-    navigateToHomeUser : () -> Unit
+    navigateToHomeUser : () -> Unit,
+    navigateToHomeModerator: () -> Unit
 ){
 
     val contex = LocalContext.current
@@ -56,6 +57,9 @@ fun LoginScreen(
             },
             navigateToHomeUser =  {
                 navigateToHomeUser()
+            },
+            navigateToHomeModerator = {
+                navigateToHomeModerator()
             }
         )
     }
@@ -67,7 +71,8 @@ fun LoginForm(
     contex: Context,
     navigateToSingUp: () -> Unit,
     navigateToPasswordForget: () -> Unit,
-    navigateToHomeUser: () -> Unit
+    navigateToHomeUser: () -> Unit,
+    navigateToHomeModerator: () -> Unit
 ){
 
     var email by rememberSaveable { mutableStateOf("") }
@@ -155,6 +160,9 @@ fun LoginForm(
                 if(email =="gabriela@gmail.com" && password=="12345678"){
                     Toast.makeText(contex, "Bienvenido", Toast.LENGTH_SHORT).show()
                     navigateToHomeUser()
+                }else if(email =="admi@gmail.com" && password=="12345678"){
+                    Toast.makeText(contex, "Bienvenido admi", Toast.LENGTH_SHORT).show()
+                    navigateToHomeModerator()
                 }else{
                     Toast.makeText(contex, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show()
                 }

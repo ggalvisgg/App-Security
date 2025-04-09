@@ -47,7 +47,6 @@ fun WatchAllComentsScreen(){
             contex = contex
         )
     }
-
 }
 
 @Composable
