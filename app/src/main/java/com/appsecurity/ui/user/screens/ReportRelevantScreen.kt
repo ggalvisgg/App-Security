@@ -1,4 +1,4 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.user.screens
 
 import android.content.Context
 import androidx.compose.foundation.background

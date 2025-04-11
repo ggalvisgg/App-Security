@@ -158,7 +158,7 @@ fun ReportesModeratorTab(
                         }) {
                             Icon(
                                 imageVector = Icons.Rounded.CheckCircle,
-                                contentDescription = "Verificado",
+                                contentDescription = stringResource(id = R.string.textIconoVerificacion),
                                 tint = Color(0xFF9177C7)
                             )
                         }
@@ -167,7 +167,7 @@ fun ReportesModeratorTab(
                         }) {
                             Icon(
                                 imageVector = Icons.Rounded.Warning,
-                                contentDescription = "Rechazado",
+                                contentDescription = stringResource(id = R.string.titleReporteRechazado),
                                 tint = Color(0xFF9177C7)
                             )
                         }
@@ -176,7 +176,7 @@ fun ReportesModeratorTab(
                         }) {
                             Icon(
                                 imageVector = Icons.Rounded.Delete,
-                                contentDescription = "Eliminado",
+                                contentDescription = stringResource(id = R.string.textIconoEliminar),
                                 tint = Color(0xFF9177C7)
                             )
                         }

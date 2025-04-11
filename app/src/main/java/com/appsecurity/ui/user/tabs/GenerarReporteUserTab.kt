@@ -1,5 +1,6 @@
 package com.appsecurity.ui.user.tabs
 
+import androidx.compose.foundation.Image
 import android.graphics.Color as AndroidColor
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -115,16 +118,17 @@ fun GenerarReporteUserTab(
             fontSize = 20.sp)
 
         Spacer(modifier = Modifier
-            .height(20.dp))
+            .height(5.dp))
 
-        TextField(
-            value = nuevoReporte,
-            onValueChange = { nuevoReporte = it },
-            label = { Text("MAPA") }
+        Image(
+            bitmap = ImageBitmap.imageResource(id = R.drawable.mapa),
+            contentDescription = stringResource(id = R.string.textIconApp),
+            modifier = Modifier
+                .padding(10.dp)
         )
 
         Spacer(modifier = Modifier
-            .height(30.dp))
+            .height(5.dp))
 
         Row(
             horizontalArrangement = Arrangement.Start,

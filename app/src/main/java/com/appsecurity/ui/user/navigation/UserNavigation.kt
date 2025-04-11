@@ -3,21 +3,20 @@ package com.appsecurity.ui.user.navigation
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.internal.composableLambdaN
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.appsecurity.ui.navigation.RouteScreen
-import com.appsecurity.ui.screens.EditForm
-import com.appsecurity.ui.screens.EditScreen
-import com.appsecurity.ui.screens.InformationAllReportScreen
-import com.appsecurity.ui.screens.ReportRelevantScreen
-import com.appsecurity.ui.screens.ReportSolvedScreen
-import com.appsecurity.ui.screens.UserReportScreen
-import com.appsecurity.ui.screens.UserWatchAllReportScreen
-import com.appsecurity.ui.screens.WatchAllComentsScreen
-import com.appsecurity.ui.screens.WatchComentsScreen
+import com.appsecurity.ui.user.screens.EditReportScreen
+import com.appsecurity.ui.userModerator.screens.EditScreen
+import com.appsecurity.ui.user.screens.InformationAllReportScreen
+import com.appsecurity.ui.user.screens.ReportRelevantScreen
+import com.appsecurity.ui.user.screens.ReportSolvedScreen
+import com.appsecurity.ui.user.screens.UserReportScreen
+import com.appsecurity.ui.user.screens.UserWatchAllReportScreen
+import com.appsecurity.ui.userModerator.screens.WatchAllComentsScreen
+import com.appsecurity.ui.userModerator.screens.WatchComentsScreen
 import com.appsecurity.ui.user.tabs.GenerarReporteUserTab
 import com.appsecurity.ui.user.tabs.HomeUserTab
 import com.appsecurity.ui.user.tabs.NotificacionesUserTab
@@ -59,58 +58,75 @@ fun UserNavigation(
         composable<RouteUserTab.Reportes>{
             ReportesUserTab(
                 navigationToReports = {
-                    navController.navigate(RouteScreen.UserReport)
+                    navController.navigate(RouteUserTab.UserReport)
                 },
                 navigationToReportRelevant = {
-                    navController.navigate(RouteScreen.ReportRelevant)
+                    navController.navigate(RouteUserTab.ReportRelevant)
                 },
                 navigationToReportSolved = {
-                    navController.navigate(RouteScreen.ReportSolved)
+                    navController.navigate(RouteUserTab.ReportSolved)
                 },
                 navigationToInfo = {
-                    navController.navigate(RouteScreen.InformationAllReport)
+                    navController.navigate(RouteUserTab.InformationAllReport)
                 }
             )
         }
 
-        composable <RouteScreen.UserWatchAllReport>{
+        composable <RouteUserTab.UserWatchAllReport>{
             UserWatchAllReportScreen(
                 navigationToReports = {
-                    navController.navigate(RouteScreen.UserReport)
+                    navController.navigate(RouteUserTab.UserReport)
                 },
                 navigationToReportRelevant = {
-                    navController.navigate(RouteScreen.ReportRelevant)
+                    navController.navigate(RouteUserTab.ReportRelevant)
                 },
                 navigationToReportSolved = {
-                    navController.navigate(RouteScreen.ReportSolved)
+                    navController.navigate(RouteUserTab.ReportSolved)
                 },
                 navigationToInfo = {
-                    navController.navigate(RouteScreen.InformationAllReport)
+                    navController.navigate(RouteUserTab.InformationAllReport)
                 }
             )
         }
 
-        composable <RouteScreen.UserReport>{
+        composable <RouteUserTab.UserReport>{
             UserReportScreen(
                 navigateToWatchReport = {
-                    navController.navigate(RouteScreen.InformationAllReport)
+                    navController.navigate(RouteUserTab.InformationAllReport)
+                },
+                navigateToEditReport = {
+                    navController.navigate(RouteUserTab.EditReport)
                 }
             )
         }
 
-        composable<RouteScreen.ReportRelevant>{
+        composable<RouteUserTab.EditReport>{
+            EditReportScreen(
+                navigateToReportResuelto = {
+                    navController.navigate(RouteUserTab.ReportSolved)
+                },
+                navigateToReportNoResuelto = {
+                    navController.navigate(RouteUserTab.UserWatchAllReport)
+                },
+                navigateToMyReports = {
+                    navController.navigate(RouteUserTab.UserReport)
+                }
+            )
+        }
+
+        composable<RouteUserTab.ReportRelevant>{
             ReportRelevantScreen(
                 navigationToInfoReport = {
-                    navController.navigate(RouteScreen.InformationAllReport)
+                    navController.navigate(RouteUserTab.InformationAllReport)
                 }
             )
         }
 
-        composable<RouteScreen.ReportSolved>{
+        composable<RouteUserTab.ReportSolved>{
             ReportSolvedScreen()
         }
 
-        composable<RouteScreen.InformationAllReport>{
+        composable<RouteUserTab.InformationAllReport>{
             InformationAllReportScreen(
                 navigationToComents = {
                     navController.navigate(RouteScreen.WatchComents)
@@ -136,7 +152,7 @@ fun UserNavigation(
                     navController.navigate(RouteScreen.HomeLogueadoUser)
                 },
                 navigateToUserReport = {
-                    navController.navigate(RouteScreen.UserReport)
+                    navController.navigate(RouteUserTab.UserReport)
                 }
             )
         }

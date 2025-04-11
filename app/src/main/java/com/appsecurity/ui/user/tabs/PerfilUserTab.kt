@@ -74,7 +74,9 @@ fun PerfilUserTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Andrea Martina Giraldo") }
+            label = { Text("Andrea Martina Giraldo") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -93,7 +95,9 @@ fun PerfilUserTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Quimbaya") }
+            label = { Text("Quimbaya") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -112,7 +116,9 @@ fun PerfilUserTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("MZ 4 CRA 3") }
+            label = { Text("MZ 4 CRA 3") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -131,7 +137,9 @@ fun PerfilUserTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("correo@gmail.com") }
+            label = { Text("correo@gmail.com") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -150,7 +158,9 @@ fun PerfilUserTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("*********") }
+            label = { Text("*********") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
