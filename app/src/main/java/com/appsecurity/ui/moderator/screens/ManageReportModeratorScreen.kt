@@ -1,4 +1,4 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.moderator.screens
 
 import android.content.Context
 import android.graphics.Color as AndroidColor

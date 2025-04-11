@@ -1,4 +1,4 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.user.screens
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -22,13 +22,13 @@ import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.FirstBaseline
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -39,7 +39,8 @@ import android.graphics.Color as AndroidColor
 
 @Composable
 fun UserReportScreen(
-    navigateToWatchReport : () -> Unit
+    navigateToWatchReport : () -> Unit,
+    navigateToEditReport : () -> Unit
 ){
 
     var contex = LocalContext.current
@@ -50,6 +51,9 @@ fun UserReportScreen(
             contex = contex,
             navigateToWatchReport = {
                 navigateToWatchReport()
+            },
+            navigateToEditReport = {
+                navigateToEditReport()
             }
         )
     }
@@ -59,7 +63,8 @@ fun UserReportScreen(
 fun ReportForm(
     padding : PaddingValues,
     contex : Context,
-    navigateToWatchReport : () -> Unit
+    navigateToWatchReport : () -> Unit,
+    navigateToEditReport : () -> Unit
 ){
     Column (
         modifier = Modifier
@@ -76,7 +81,7 @@ fun ReportForm(
 
         Box(
             modifier = Modifier
-                .background(Color.LightGray, shape = RoundedCornerShape(8.dp))
+                .background(Color.White, shape = RoundedCornerShape(8.dp))
                 .padding(16.dp)
         ) {
             Column(
@@ -122,14 +127,19 @@ fun ReportForm(
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(
-                        imageVector = Icons.Rounded.Edit,
-                        contentDescription = stringResource(id = R.string.textIconoEditar),
-                        modifier = Modifier
-                            .padding(end = 8.dp)
-                            .size(30.dp),
-                        tint = Color(0xFF63578A)
-                    )
+
+                    IconButton(onClick = {
+                        navigateToEditReport()
+                    }) {
+                        Icon(
+                            imageVector = Icons.Rounded.Edit,
+                            contentDescription = stringResource(id = R.string.textIconoVerificacion),
+                            modifier = Modifier
+                                .padding(end = 8.dp)
+                                .size(30.dp),
+                            tint = Color(0xFF9177C7)
+                        )
+                    }
 
                     Icon(
                         imageVector = Icons.Rounded.Delete,

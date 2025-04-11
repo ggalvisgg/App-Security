@@ -11,13 +11,13 @@ import com.appsecurity.ui.moderator.tabs.HomeModeratorTab
 import com.appsecurity.ui.moderator.tabs.PerfilModeratorTab
 import com.appsecurity.ui.moderator.tabs.ReportesModeratorTab
 import com.appsecurity.ui.navigation.RouteScreen
-import com.appsecurity.ui.screens.EditScreen
-import com.appsecurity.ui.screens.ManageReportModeratorScreen
-import com.appsecurity.ui.screens.ReasonReportScreen
-import com.appsecurity.ui.screens.ReportSolvedScreen
-import com.appsecurity.ui.screens.WatchAllComentsScreen
-import com.appsecurity.ui.screens.WatchComentsScreen
+import com.appsecurity.ui.userModerator.screens.EditScreen
+import com.appsecurity.ui.moderator.screens.ManageReportModeratorScreen
+import com.appsecurity.ui.moderator.screens.ReasonReportScreen
 import com.appsecurity.ui.user.navigation.RouteUserTab
+import com.appsecurity.ui.user.screens.ReportSolvedScreen
+import com.appsecurity.ui.userModerator.screens.WatchAllComentsScreen
+import com.appsecurity.ui.userModerator.screens.WatchComentsScreen
 
 @Composable
 fun ModeratorNavigation(
@@ -36,10 +36,10 @@ fun ModeratorNavigation(
         composable<RouteModerator.Reportes>{
             ReportesModeratorTab(
                 navigationToInfoReportModerator = {
-                    navController.navigate(RouteScreen.ManageReportModerator)
+                    navController.navigate(RouteModerator.ManageReport)
                 },
                 navigationToReasonReport = {
-                    navController.navigate(RouteScreen.ReasonReport)
+                    navController.navigate(RouteModerator.ReasonReport)
                 }
             )
         }
@@ -60,17 +60,17 @@ fun ModeratorNavigation(
             )
         }
 
-        composable<RouteScreen.ManageReportModerator>{
-            navController.navigate(RouteScreen.ManageReportModerator)
+        composable<RouteModerator.ManageReport>{
+            navController.navigate(RouteModerator.ManageReport)
         }
 
-        composable<RouteScreen.ManageReportModerator>{
+        composable<RouteModerator.ManageReport>{
             ManageReportModeratorScreen(
                 navigationToComents ={
                     navController.navigate(RouteScreen.WatchComents)
                 },
                 navigationToResuelto = {
-                    navController.navigate(RouteScreen.ReportSolved)
+                    navController.navigate(RouteUserTab.ReportSolved)
                 }
             )
         }
@@ -83,7 +83,7 @@ fun ModeratorNavigation(
             )
         }
 
-        composable<RouteScreen.ReportSolved>{
+        composable<RouteUserTab.ReportSolved>{
             ReportSolvedScreen()
         }
 
@@ -91,7 +91,7 @@ fun ModeratorNavigation(
             WatchAllComentsScreen()
         }
 
-        composable<RouteScreen.ReasonReport>{
+        composable<RouteModerator.ReasonReport>{
             ReasonReportScreen(
                 navegationToReportes = {
                     navController.navigate(RouteModerator.Reportes)

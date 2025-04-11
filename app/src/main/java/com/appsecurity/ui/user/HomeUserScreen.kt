@@ -9,7 +9,6 @@ import com.appsecurity.ui.user.navigation.UserNavigation
 @Composable
 fun HomeUserScreen(
 ){
-
     val navController = rememberNavController()
 
     Scaffold (

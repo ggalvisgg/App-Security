@@ -74,7 +74,9 @@ fun PerfilModeratorTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Simon Giraldo Lopez") }
+            label = { Text("Simon Giraldo Lopez") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -93,7 +95,9 @@ fun PerfilModeratorTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Armenia") }
+            label = { Text("Armenia") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -112,7 +116,9 @@ fun PerfilModeratorTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("BRR LA SOLEDAD CRA 47") }
+            label = { Text("BRR LA SOLEDAD CRA 47") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -131,7 +137,9 @@ fun PerfilModeratorTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("admi@gmail.com") }
+            label = { Text("admi@gmail.com") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(
@@ -150,7 +158,9 @@ fun PerfilModeratorTab(
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("*********") }
+            label = { Text("*********") },
+            readOnly = true,
+            enabled = false
         )
 
         Spacer(

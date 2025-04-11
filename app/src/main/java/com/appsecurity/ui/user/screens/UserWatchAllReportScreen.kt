@@ -1,4 +1,4 @@
-package com.appsecurity.ui.screens
+package com.appsecurity.ui.user.screens
 
 import android.content.Context
 import android.graphics.Color as AndroidColor
@@ -18,9 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Done
-import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon

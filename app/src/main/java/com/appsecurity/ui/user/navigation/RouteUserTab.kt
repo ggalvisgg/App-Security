@@ -20,4 +20,30 @@ sealed class RouteUserTab {
     @Serializable
     data object Perfil : RouteUserTab()
 
+    //--------------
+
+    @Serializable
+    data object EditReport : RouteUserTab()
+
+    @Serializable
+    data object InformationAllReport : RouteUserTab()
+
+    @Serializable
+    data object ReportRelevant : RouteUserTab()
+
+    @Serializable
+    data object ReportSolved : RouteUserTab()
+
+//    @Serializable
+//    data object UserCreateReport : RouteUserTab()
+
+    @Serializable
+    data object UserReport : RouteUserTab()
+
+    @Serializable
+    data object UserWatchAllReport : RouteUserTab()
+
+//    @Serializable
+//    data object WatchAccount : RouteUserTab()
+
 }

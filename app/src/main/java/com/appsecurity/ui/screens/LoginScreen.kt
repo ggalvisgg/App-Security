@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import android.content.Context
 import android.util.Patterns
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,11 +27,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.createBitmap
 import com.appsecurity.R
 import com.appsecurity.ui.component.ButtonIcon
 import com.appsecurity.ui.component.TextFieldForm
@@ -89,10 +93,12 @@ fun LoginForm(
         Text(text = stringResource(id = R.string.titleLogin),
             fontSize = 25.sp)
 
-        Icon(imageVector = Icons.Rounded.AccountCircle,
+        Image(
+            bitmap = ImageBitmap.imageResource(id = R.drawable.logo),
             contentDescription = stringResource(id = R.string.textIconApp),
             modifier = Modifier
-                .padding(50.dp))
+                .padding(50.dp)
+        )
 
         Text(text = stringResource(id = R.string.subtitleEmail),
             modifier = Modifier

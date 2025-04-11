@@ -14,4 +14,10 @@ sealed class RouteModerator(){
     @Serializable
     data object Perfil : RouteModerator()
 
+    @Serializable
+    data object ReasonReport : RouteModerator()
+
+    @Serializable
+    data object ManageReport : RouteModerator()
+
 }

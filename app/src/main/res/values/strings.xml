@@ -101,5 +101,6 @@
     <string name="buttonRechazado">Rechazado</string>
     <string name="buttonEliminado">Eliminado</string>
     <string name="subtitleUsuario">Usuario: </string>
+    <string name="textCategoria">Categoria: </string>
 
 </resources>
