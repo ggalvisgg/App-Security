@@ -11,11 +11,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.rounded.AccountCircle
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -193,7 +196,10 @@ fun PerfilUserTab(
 
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
-                onClick = {}
+                onClick = {
+
+
+                }
             ) {
                 Text(
                     text = stringResource(id = R.string.subtitleEliminarCuenta),
@@ -201,6 +207,43 @@ fun PerfilUserTab(
                     textAlign = TextAlign.Center
                 )
             }
+
+            AlertDialog(
+                icon = {
+                    Icon(
+                        imageVector = Icons.Rounded.AccountCircle,
+                        contentDescription = "Example Icon"
+                    )
+                },
+                title = {
+                    Text(text = "")
+                },
+                text = {
+                    Text(text = "")
+                },
+                onDismissRequest = {
+
+                },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+
+                        }
+                    ) {
+                        Text("Confirm")
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = {
+
+                        }
+                    ) {
+                        Text("Dismiss")
+                    }
+                }
+            )
+
         }
     }
 
