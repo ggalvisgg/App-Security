@@ -1,6 +1,7 @@
 package com.appsecurity.ui.screens
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -33,8 +34,12 @@ import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import android.graphics.Color as AndroidColor
 import com.appsecurity.R
+import com.appsecurity.model.TipoUsuario
+import com.appsecurity.model.Usuario
+import com.appsecurity.viewmodel.AuthViewModel
 
 @Composable
 fun RegisterUserScreen(
@@ -62,7 +67,13 @@ fun RegisterForm(
     navigateToLogin: () -> Unit
 ) {
 
+    var nombreCompleto by rememberSaveable { mutableStateOf("") }
+    var ciudad by rememberSaveable { mutableStateOf("") }
+    var direccion by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
+
+    val viewModel: AuthViewModel = viewModel()
 
     Column(
         modifier = Modifier
@@ -104,8 +115,8 @@ fun RegisterForm(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
+            value = nombreCompleto,
+            onValueChange = { nombreCompleto = it },
             label = { Text("Andrea Martina Giraldo") }
         )
 
@@ -123,8 +134,8 @@ fun RegisterForm(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
+            value = ciudad,
+            onValueChange = { ciudad = it },
             label = { Text("Quimbaya") }
         )
 
@@ -142,8 +153,8 @@ fun RegisterForm(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
+            value = direccion,
+            onValueChange = { direccion = it },
             label = { Text("MZ 4 CRA 3") }
         )
 
@@ -190,8 +201,8 @@ fun RegisterForm(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
+            value = password,
+            onValueChange = { password = it },
             label = { Text("*********") }
         )
 
@@ -200,15 +211,39 @@ fun RegisterForm(
                 .height(15.dp)
         )
 
-            Button(
-                colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
-                onClick = {}
-            ) {
-                Text(
-                    text = stringResource(id = R.string.buttonTextRegister),
-                    fontSize = 18.sp
+        Button(
+            colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
+            onClick = {
+                val usuario = Usuario(
+                    nombreCompleto = nombreCompleto,
+                    ciudad = ciudad,
+                    direccion = direccion,
+                    email = email,
+                    password = password
                 )
+                viewModel.registrarUsuario(usuario, password)
             }
+        ) {
+            Text(
+                text = stringResource(id = R.string.buttonTextRegister),
+                fontSize = 18.sp
+            )
+        }
+
+        //MUESTRA EL ESTADO DE ÉXITO O ERROR
+        viewModel.registroExitoso?.let {
+            if (it) {
+                Toast.makeText(contex, "Registro exitoso", Toast.LENGTH_LONG).show()
+                viewModel.limpiarEstado()
+                navigateToLogin()
+            }
+        }
+
+        viewModel.errorRegistro?.let {
+            Text(text = it, color = Color.Red)
+            viewModel.limpiarEstado()
+        }
+
 
         Spacer(modifier = Modifier.height(10.dp))
 

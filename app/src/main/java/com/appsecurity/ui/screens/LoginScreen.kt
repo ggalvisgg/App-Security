@@ -35,9 +35,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.createBitmap
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.appsecurity.R
 import com.appsecurity.ui.component.ButtonIcon
 import com.appsecurity.ui.component.TextFieldForm
+import com.appsecurity.viewmodel.AuthViewModel
 
 @Composable
 fun LoginScreen(
@@ -81,6 +83,8 @@ fun LoginForm(
 
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
+
+    val viewModel: AuthViewModel = viewModel()
 
     Column(
         modifier = Modifier
@@ -163,19 +167,40 @@ fun LoginForm(
             icon = Icons.Rounded.Done,
             text = stringResource(id = R.string.textIconLogin),
             onClick = {
-                if(email =="gabriela@gmail.com" && password=="12345678"){
-                    Toast.makeText(contex, "Bienvenido", Toast.LENGTH_SHORT).show()
-                    navigateToHomeUser()
-                }else if(email =="admi@gmail.com" && password=="12345678"){
-                    Toast.makeText(contex, "Bienvenido admi", Toast.LENGTH_SHORT).show()
-                    navigateToHomeModerator()
-                }else{
-                    Toast.makeText(contex, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show()
-                }
+                viewModel.login(email, password)
+//                if(email =="gabriela@gmail.com" && password=="12345678"){
+//                    Toast.makeText(contex, "Bienvenido", Toast.LENGTH_SHORT).show()
+//                    navigateToHomeUser()
+//                }else if(email =="admi@gmail.com" && password=="12345678"){
+//                    Toast.makeText(contex, "Bienvenido admi", Toast.LENGTH_SHORT).show()
+//                    navigateToHomeModerator()
+//                }else{
+//                    Toast.makeText(contex, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show()
+//                }
             },
             color = "#7251B5",
             enable = email.isNotEmpty() && password.isNotEmpty()
         )
+
+        viewModel.loginExitoso?.let { success ->
+            if (success) {
+                val tipo = viewModel.tipoUsuario
+                if (tipo == "MODERADOR") {
+                    Toast.makeText(contex, "Bienvenido moderador", Toast.LENGTH_SHORT).show()
+                    viewModel.limpiarEstado()
+                    navigateToHomeModerator()
+                } else {
+                    Toast.makeText(contex, "Bienvenido", Toast.LENGTH_SHORT).show()
+                    viewModel.limpiarEstado()
+                    navigateToHomeUser()
+                }
+            }
+        }
+
+        viewModel.errorLogin?.let {
+            Toast.makeText(contex, it, Toast.LENGTH_LONG).show()
+            viewModel.limpiarEstado()
+        }
 
         Spacer(modifier = Modifier.height(10.dp))
 

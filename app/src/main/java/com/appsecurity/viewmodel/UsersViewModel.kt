@@ -1,18 +1,17 @@
 package com.appsecurity.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.appsecurity.model.User
+import com.appsecurity.model.Usuario
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class UsersViewModel : ViewModel() {
 
-    private val _users = MutableStateFlow(emptyList<User>())
-    val users : StateFlow< List<User> > =_users.asStateFlow()
+    private val _users = MutableStateFlow(emptyList<Usuario>())
+    val users : StateFlow< List<Usuario> > =_users.asStateFlow()
 
-    //se agrega el crud
-    fun create(user: User){
+    fun create(user: Usuario){
         _users.value += user
     }
 
