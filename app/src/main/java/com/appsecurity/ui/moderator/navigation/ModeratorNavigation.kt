@@ -48,6 +48,9 @@ fun ModeratorNavigation(
             PerfilModeratorTab(
                 navigationToEdit = {
                     navController.navigate(RouteScreen.EditInformation)
+                },
+                navigationToLogin = {
+                    navController.navigate(RouteScreen.Login)
                 }
             )
         }

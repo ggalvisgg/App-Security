@@ -116,8 +116,7 @@ fun RegisterForm(
 
         TextField(
             value = nombreCompleto,
-            onValueChange = { nombreCompleto = it },
-            label = { Text("Andrea Martina Giraldo") }
+            onValueChange = { nombreCompleto = it }
         )
 
         Spacer(
@@ -135,8 +134,7 @@ fun RegisterForm(
 
         TextField(
             value = ciudad,
-            onValueChange = { ciudad = it },
-            label = { Text("Quimbaya") }
+            onValueChange = { ciudad = it }
         )
 
         Spacer(
@@ -154,8 +152,7 @@ fun RegisterForm(
 
         TextField(
             value = direccion,
-            onValueChange = { direccion = it },
-            label = { Text("MZ 4 CRA 3") }
+            onValueChange = { direccion = it }
         )
 
         Spacer(
@@ -183,8 +180,7 @@ fun RegisterForm(
 
         TextField(
             value = email,
-            onValueChange = { email = it },
-            label = { Text("correo@gmail.com") }
+            onValueChange = { email = it }
         )
 
         Spacer(
@@ -202,8 +198,7 @@ fun RegisterForm(
 
         TextField(
             value = password,
-            onValueChange = { password = it },
-            label = { Text("*********") }
+            onValueChange = { password = it }
         )
 
         Spacer(

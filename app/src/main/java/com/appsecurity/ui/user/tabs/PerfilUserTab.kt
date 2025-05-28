@@ -1,5 +1,6 @@
 package com.appsecurity.ui.user.tabs
 
+import android.widget.Toast
 import android.graphics.Color as AndroidColor
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,23 +24,38 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.appsecurity.R
+import com.appsecurity.viewmodel.UsuarioViewModel
 
 @Composable
 fun PerfilUserTab(
-    navigationToEdit: () -> Unit
+    navigationToEdit: () -> Unit,
+    navigationToLogin: () -> Unit
 ){
 
-    var email by rememberSaveable { mutableStateOf("") }
+    val viewModel : UsuarioViewModel = viewModel()
+    val usuario = viewModel.usuario
+    val context = LocalContext.current
+    var showDialog by remember { mutableStateOf(false) }
+
+
+    val nombreCompleto = usuario?.nombreCompleto?:""
+    val ciudad = usuario?.ciudad?: ""
+    val direccion = usuario?.direccion?: ""
+    val email = usuario?.email?: ""
+    val password = usuario?.password?: ""
 
     Column(
         modifier = Modifier
@@ -75,9 +91,8 @@ fun PerfilUserTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Andrea Martina Giraldo") },
+            value = nombreCompleto,
+            onValueChange = {},
             readOnly = true,
             enabled = false
         )
@@ -96,9 +111,8 @@ fun PerfilUserTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Quimbaya") },
+            value = ciudad,
+            onValueChange = {  },
             readOnly = true,
             enabled = false
         )
@@ -117,9 +131,8 @@ fun PerfilUserTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("MZ 4 CRA 3") },
+            value = direccion,
+            onValueChange = {  },
             readOnly = true,
             enabled = false
         )
@@ -139,8 +152,7 @@ fun PerfilUserTab(
 
         TextField(
             value = email,
-            onValueChange = { email = it },
-            label = { Text("correo@gmail.com") },
+            onValueChange = { },
             readOnly = true,
             enabled = false
         )
@@ -159,9 +171,8 @@ fun PerfilUserTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("*********") },
+            value = password,
+            onValueChange = {  },
             readOnly = true,
             enabled = false
         )
@@ -170,6 +181,41 @@ fun PerfilUserTab(
             modifier = Modifier
                 .height(20.dp)
         )
+
+        if (showDialog) {
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                confirmButton = {
+                    TextButton(onClick = {
+                        showDialog = false
+                        viewModel.eliminarCuenta()
+                    }) {
+                        Text("Sí")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = {
+                        showDialog = false
+                    }) {
+                        Text("Cancelar")
+                    }
+                },
+                title = { Text("Confirmar eliminación") },
+                text = { Text("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.") }
+            )
+        }
+
+        // Detectar éxito o error
+        if (viewModel.eliminacionExitosa) {
+            Toast.makeText(context, "Cuenta eliminada", Toast.LENGTH_SHORT).show()
+            viewModel.limpiarEstadoEliminacion()
+            navigationToLogin()
+        }
+
+        viewModel.errorEliminacion?.let {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            viewModel.limpiarEstadoEliminacion()
+        }
 
         Row(
             horizontalArrangement = Arrangement.Center,
@@ -197,8 +243,7 @@ fun PerfilUserTab(
             Button(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#9177C7"))),
                 onClick = {
-
-
+                    showDialog = true
                 }
             ) {
                 Text(
@@ -207,44 +252,6 @@ fun PerfilUserTab(
                     textAlign = TextAlign.Center
                 )
             }
-
-            AlertDialog(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Rounded.AccountCircle,
-                        contentDescription = "Example Icon"
-                    )
-                },
-                title = {
-                    Text(text = "")
-                },
-                text = {
-                    Text(text = "")
-                },
-                onDismissRequest = {
-
-                },
-                confirmButton = {
-                    TextButton(
-                        onClick = {
-
-                        }
-                    ) {
-                        Text("Confirm")
-                    }
-                },
-                dismissButton = {
-                    TextButton(
-                        onClick = {
-
-                        }
-                    ) {
-                        Text("Dismiss")
-                    }
-                }
-            )
-
         }
     }
-
 }

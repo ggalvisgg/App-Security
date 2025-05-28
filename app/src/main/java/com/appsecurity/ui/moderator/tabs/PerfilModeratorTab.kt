@@ -29,14 +29,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.appsecurity.R
+import com.appsecurity.viewmodel.UsuarioViewModel
 
 @Composable
 fun PerfilModeratorTab(
-    navigationToEdit : () -> Unit
+    navigationToEdit : () -> Unit,
+    navigationToLogin : () -> Unit
 ){
 
-    var email by rememberSaveable { mutableStateOf("") }
+    val viewModel : UsuarioViewModel = viewModel()
+    val usuario = viewModel.usuario
+
+    val nombreCompleto = usuario?.nombreCompleto?:""
+    val ciudad = usuario?.ciudad?: ""
+    val direccion = usuario?.direccion?: ""
+    val email = usuario?.email?: ""
+    val password = usuario?.password?: ""
 
     Column(
         modifier = Modifier
@@ -72,9 +82,8 @@ fun PerfilModeratorTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Simon Giraldo Lopez") },
+            value = nombreCompleto,
+            onValueChange = {  },
             readOnly = true,
             enabled = false
         )
@@ -93,9 +102,8 @@ fun PerfilModeratorTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Armenia") },
+            value = ciudad,
+            onValueChange = {  },
             readOnly = true,
             enabled = false
         )
@@ -114,9 +122,8 @@ fun PerfilModeratorTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("BRR LA SOLEDAD CRA 47") },
+            value = direccion,
+            onValueChange = {  },
             readOnly = true,
             enabled = false
         )
@@ -136,8 +143,7 @@ fun PerfilModeratorTab(
 
         TextField(
             value = email,
-            onValueChange = { email = it },
-            label = { Text("admi@gmail.com") },
+            onValueChange = {  },
             readOnly = true,
             enabled = false
         )
@@ -156,9 +162,8 @@ fun PerfilModeratorTab(
         )
 
         TextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("*********") },
+            value = password,
+            onValueChange = { },
             readOnly = true,
             enabled = false
         )
