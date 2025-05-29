@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,5 +68,7 @@ dependencies {
     implementation("com.mapbox.extension:maps-compose:11.11.0")
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4")
+    implementation("androidx.activity:activity-compose:1.7.2")
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
 }

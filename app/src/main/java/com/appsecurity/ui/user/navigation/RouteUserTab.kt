@@ -46,4 +46,8 @@ sealed class RouteUserTab {
 //    @Serializable
 //    data object WatchAccount : RouteUserTab()
 
+    @Serializable
+    data class InformationReport(val reporteId: String) : RouteUserTab()
+
+
 }

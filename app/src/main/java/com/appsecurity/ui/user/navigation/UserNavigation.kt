@@ -35,8 +35,6 @@ fun UserNavigation(
         startDestination = RouteUserTab.Home
     ){
 
-
-
         composable<RouteUserTab.Home>{
             HomeUserTab(
                 navigateToInformationAllReport = {
