@@ -58,7 +58,11 @@ fun Navigation(){
             }
 
             composable<RouteScreen.ForgetPassword>{
-                ForgetPasswordScreen()
+                ForgetPasswordScreen(
+                    navigateToLogin = {
+                        navController.navigate(RouteScreen.Login)
+                    }
+                )
             }
 
             composable<RouteScreen.RecoverPassword>{

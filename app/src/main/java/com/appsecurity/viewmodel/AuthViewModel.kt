@@ -6,7 +6,9 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.appsecurity.model.Usuario
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
@@ -74,6 +76,19 @@ class AuthViewModel : ViewModel() {
                 }
         }
     }
+
+    fun recuperarContrasenia(
+        email: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        Firebase.auth.sendPasswordResetEmail(email)
+            .addOnSuccessListener { onSuccess() }
+            .addOnFailureListener { e ->
+                onError(e.message ?: "Error al enviar correo de recuperación")
+            }
+    }
+
 
     fun limpiarEstado() {
         registroExitoso = null
