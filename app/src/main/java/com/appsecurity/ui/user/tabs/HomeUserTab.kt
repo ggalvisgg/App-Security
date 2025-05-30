@@ -16,9 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.appsecurity.R
 import com.appsecurity.ui.component.ActivationGps
 import com.appsecurity.ui.component.UbicationGPS
+import com.appsecurity.viewmodel.ReporteViewModel
 import com.mapbox.geojson.Point
 import com.mapbox.maps.extension.compose.MapEffect
 import com.mapbox.maps.extension.compose.MapboxMap
@@ -31,40 +33,51 @@ import com.mapbox.maps.plugin.locationcomponent.location
 
 @Composable
 fun HomeUserTab(
-    navigateToInformationAllReport : () -> Unit
-){
+    navigateToInformationAllReport: () -> Unit,
+    viewModel: ReporteViewModel = viewModel()
+) {
+
     ActivationGps()
 
-    var mapViewportState = rememberMapViewportState {
+    val reportes = viewModel.listaTodosReportes
 
+    // Obtener todos los reportes al entrar
+    LaunchedEffect(Unit) {
+        viewModel.obtenerTodosLosReportes()
+    }
+
+    val mapViewportState = rememberMapViewportState {
         setCameraOptions {
-           zoom(10.0)
+            zoom(10.0)
             center(Point.fromLngLat(-75.7358251, 4.4721139))
         }
     }
 
-    var markerResourceId by remember {
-        mutableStateOf(R.drawable.gps)
-    }
-
-    var marker = rememberIconImage(key = markerResourceId, painter = painterResource(markerResourceId))
+    val marker = rememberIconImage(
+        key = R.drawable.gps,
+        painter = painterResource(R.drawable.gps)
+    )
 
     MapboxMap(
         modifier = Modifier.fillMaxSize(),
         mapViewportState = mapViewportState
-    ){
-
+    ) {
         UbicationGPS(mapViewportState)
 
-        PointAnnotation(
-            point = Point.fromLngLat(-75.7358251, 4.4721139),
-        ) {
-            iconImage = marker
-            interactionsState.onClicked {
-                navigateToInformationAllReport()
-                true
+        // Mostrar marcador por cada reporte
+        reportes.forEach { reporte ->
+            val point = Point.fromLngLat(reporte.longitud, reporte.latitud)
+
+            PointAnnotation(point = point) {
+                iconImage = marker
+
+                // Al hacer clic en el marcador
+                interactionsState.onClicked {
+                    // Aquí puedes pasar el ID del reporte si luego quieres navegar a su detalle
+                    navigateToInformationAllReport()
+                    true
+                }
             }
         }
     }
-
 }
