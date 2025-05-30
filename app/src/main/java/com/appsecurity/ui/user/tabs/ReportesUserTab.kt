@@ -137,7 +137,7 @@ fun ReportesUserTab(
                         )
 
                         Text(
-                            text = reporte.categoria,
+                            text = reporte.categoria.name,
                             modifier = Modifier.align(Alignment.Start),
                             fontSize = 20.sp
                         )

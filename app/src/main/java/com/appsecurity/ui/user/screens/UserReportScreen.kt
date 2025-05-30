@@ -135,7 +135,7 @@ fun ReportForm(
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            text = reporte.categoria,
+                            text = reporte.categoria.name,
                             modifier = Modifier.align(Alignment.Start),
                             fontSize = 16.sp
                         )

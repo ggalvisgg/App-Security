@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
+import com.appsecurity.model.CategoriaReporte
 import com.appsecurity.model.Reporte
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,7 +31,7 @@ class ReporteViewModel : ViewModel() {
     fun crearReporte(
         titulo: String,
         descripcion: String,
-        categoria: String,
+        categoria: CategoriaReporte,
         point: Point?,
         imagenUri: Uri?,
         context: Context

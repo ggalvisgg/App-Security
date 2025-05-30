@@ -32,7 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.appsecurity.R
+import com.appsecurity.model.CategoriaReporte
 import com.appsecurity.model.Reporte
+import com.appsecurity.ui.component.CategoriaDropdown
 import com.appsecurity.ui.component.UbicationGPS
 import com.appsecurity.viewmodel.ReporteViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -51,7 +53,7 @@ fun GenerarReporteUserTab(
     val context = LocalContext.current
     val viewModel: ReporteViewModel = viewModel()
 
-    var categoria by rememberSaveable { mutableStateOf("") }
+    var categoriaSeleccionada by rememberSaveable { mutableStateOf(CategoriaReporte.SEGURIDAD) }
     var descripcion by rememberSaveable { mutableStateOf("") }
     var imagenUri by rememberSaveable { mutableStateOf<Uri?>(null) }
     var pointClicked by remember { mutableStateOf<Point?>(null) }
@@ -100,10 +102,10 @@ fun GenerarReporteUserTab(
         Spacer(modifier = Modifier.height(10.dp))
 
         Text("Categoría", fontSize = 20.sp, modifier = Modifier.align(Alignment.Start).padding(start = 60.dp))
-        TextField(
-            value = categoria,
-            onValueChange = { categoria = it },
-            label = { Text("Ej: Seguridad, Mascotas...") }
+
+        CategoriaDropdown(
+            categoriaSeleccionada = categoriaSeleccionada,
+            onCategoriaSeleccionada = { categoriaSeleccionada = it }
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -149,7 +151,7 @@ fun GenerarReporteUserTab(
                     viewModel.crearReporte(
                         titulo = "Reporte desde app",
                         descripcion = descripcion,
-                        categoria = categoria,
+                        categoria = categoriaSeleccionada,
                         point = pointClicked,
                         imagenUri = imagenUri,
                         context = context

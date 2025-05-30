@@ -37,7 +37,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.appsecurity.R
+import com.appsecurity.model.CategoriaReporte
 import com.appsecurity.model.Reporte
+import com.appsecurity.ui.component.CategoriaDropdown
 import com.appsecurity.viewmodel.ReporteViewModel
 import com.mapbox.maps.extension.compose.MapboxMap
 import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportState
@@ -92,7 +94,7 @@ fun EditReportForm(
 
         val viewModel: ReporteViewModel = viewModel()
 
-        var categoria by rememberSaveable { mutableStateOf(reporte.categoria) }
+        var categoriaSeleccionada by rememberSaveable { mutableStateOf(CategoriaReporte.SEGURIDAD) }
         var descripcion by rememberSaveable { mutableStateOf(reporte.descripcion) }
 
         Text(text = stringResource(id = R.string.titleEditarReporte),
@@ -159,9 +161,9 @@ fun EditReportForm(
         Spacer(modifier = Modifier
             .height(10.dp))
 
-        TextField(
-            value = categoria,
-            onValueChange = { categoria = it }
+        CategoriaDropdown(
+            categoriaSeleccionada = categoriaSeleccionada,
+            onCategoriaSeleccionada = { categoriaSeleccionada = it }
         )
 
         Spacer(modifier = Modifier
@@ -234,7 +236,7 @@ fun EditReportForm(
                 colors = ButtonDefaults.buttonColors(Color(AndroidColor.parseColor("#7251B5"))),
                 onClick = {
                     val reporteEditado = reporte.copy(
-                        categoria = categoria,
+                        categoria = categoriaSeleccionada,
                         descripcion = descripcion,
                         latitud = pointClicked.latitude(),
                         longitud = pointClicked.longitude()
