@@ -30,7 +30,11 @@ fun ModeratorNavigation(
         startDestination = RouteModerator.Home
     ){
         composable<RouteModerator.Home>{
-            HomeModeratorTab()
+            HomeModeratorTab(
+                navigateToInformationAllReport = {
+                    navController.navigate(RouteModerator.ManageReport)
+                }
+            )
         }
 
         composable<RouteModerator.Reportes>{
