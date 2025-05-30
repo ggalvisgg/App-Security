@@ -52,11 +52,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import androidx.compose.material3.AlertDialog
+import com.appsecurity.model.Reporte
 
 @Composable
 fun UserReportScreen(
     navigateToWatchReport : () -> Unit,
-    navigateToEditReport : () -> Unit
+    navigateToEditReport : (Reporte) -> Unit
 ){
 
     var contex = LocalContext.current
@@ -68,8 +69,8 @@ fun UserReportScreen(
             navigateToWatchReport = {
                 navigateToWatchReport()
             },
-            navigateToEditReport = {
-                navigateToEditReport()
+            navigateToEditReport = { reporte ->
+                navigateToEditReport(reporte)
             }
         )
     }
@@ -80,7 +81,7 @@ fun ReportForm(
     padding: PaddingValues,
     contex: Context,
     navigateToWatchReport: () -> Unit,
-    navigateToEditReport: () -> Unit
+    navigateToEditReport: (Reporte) -> Unit
 ) {
 
     val viewModel: ReporteViewModel = viewModel()
@@ -155,7 +156,7 @@ fun ReportForm(
                             horizontalArrangement = Arrangement.End,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            IconButton(onClick = { navigateToEditReport() }) {
+                            IconButton(onClick = { navigateToEditReport(reporte) }) {
                                 Icon(
                                     imageVector = Icons.Rounded.Edit,
                                     contentDescription = "Editar",

@@ -52,7 +52,8 @@ import com.mapbox.geojson.Point
 fun EditReportScreen(
     navigateToReportResuelto: () -> Unit,
     navigateToReportNoResuelto: () -> Unit,
-    navigateToMyReports: () -> Unit
+    navigateToMyReports: () -> Unit,
+    reporte: Reporte
 ){
 
     var contex = LocalContext.current
@@ -70,7 +71,7 @@ fun EditReportScreen(
             navigateToMyReports = {
                 navigateToMyReports()
             },
-            reporte = Reporte()
+            reporte = reporte
         )
     }
 }
@@ -94,7 +95,7 @@ fun EditReportForm(
 
         val viewModel: ReporteViewModel = viewModel()
 
-        var categoriaSeleccionada by rememberSaveable { mutableStateOf(CategoriaReporte.SEGURIDAD) }
+        var categoriaSeleccionada by rememberSaveable { mutableStateOf(reporte.categoria) }
         var descripcion by rememberSaveable { mutableStateOf(reporte.descripcion) }
 
         Text(text = stringResource(id = R.string.titleEditarReporte),

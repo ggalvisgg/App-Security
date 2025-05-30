@@ -23,7 +23,11 @@ sealed class RouteUserTab {
     //--------------
 
     @Serializable
-    data object EditReport : RouteUserTab()
+    data object EditReport : RouteUserTab() {
+        const val route = "edit_report"
+        const val reporteArg = "reporte"
+        val routeWithArgs = "$route/{$reporteArg}"
+    }
 
     @Serializable
     data object InformationAllReport : RouteUserTab()

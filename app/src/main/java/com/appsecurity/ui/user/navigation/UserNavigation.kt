@@ -5,8 +5,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.appsecurity.model.Reporte
 import com.appsecurity.ui.navigation.RouteScreen
 import com.appsecurity.ui.user.screens.EditReportScreen
 import com.appsecurity.ui.userModerator.screens.EditScreen
@@ -22,6 +25,9 @@ import com.appsecurity.ui.user.tabs.HomeUserTab
 import com.appsecurity.ui.user.tabs.NotificacionesUserTab
 import com.appsecurity.ui.user.tabs.PerfilUserTab
 import com.appsecurity.ui.user.tabs.ReportesUserTab
+import com.google.gson.Gson
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun UserNavigation(
@@ -101,13 +107,27 @@ fun UserNavigation(
                 navigateToWatchReport = {
                     navController.navigate(RouteUserTab.InformationAllReport)
                 },
-                navigateToEditReport = {
-                    navController.navigate(RouteUserTab.EditReport)
+                navigateToEditReport = { reporte ->
+                    val reporteJson = Gson().toJson(reporte)
+                    val encodedJson = URLEncoder.encode(reporteJson, StandardCharsets.UTF_8.toString())
+                    navController.navigate("${RouteUserTab.EditReport.route}/$encodedJson")
                 }
             )
         }
 
-        composable<RouteUserTab.EditReport>{
+        composable(
+            route = RouteUserTab.EditReport.routeWithArgs,
+            arguments = listOf(
+                navArgument(RouteUserTab.EditReport.reporteArg) { 
+                    type = NavType.StringType 
+                    nullable = false
+                }
+            )
+        ) { backStackEntry ->
+            val reporteJson = backStackEntry.arguments?.getString(RouteUserTab.EditReport.reporteArg)
+            val decodedJson = java.net.URLDecoder.decode(reporteJson, StandardCharsets.UTF_8.toString())
+            val reporte = Gson().fromJson(decodedJson, Reporte::class.java)
+            
             EditReportScreen(
                 navigateToReportResuelto = {
                     navController.navigate(RouteUserTab.ReportSolved)
@@ -117,7 +137,8 @@ fun UserNavigation(
                 },
                 navigateToMyReports = {
                     navController.navigate(RouteUserTab.UserReport)
-                }
+                },
+                reporte = reporte
             )
         }
 
